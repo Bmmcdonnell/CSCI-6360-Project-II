@@ -56,3 +56,20 @@
 2026.03.25 12:59:29 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
 2026.03.25 12:59:29 INFO  time: compiled CSCI-6360-Project-II_d5c0a6989e in 2.16s
 2026.03.25 12:59:32 INFO  time: indexed workspace in 6.96s
+2026.03.25 13:51:38 INFO  no build target found for /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_2L.scala. Using presentation compiler with project's scala-library version: 3.8.0
+2026.03.25 13:51:38 INFO  no build target found for /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_2L.scala. Using presentation compiler with project's scala-library version: 3.8.0
+2026.03.25 13:51:39 WARN  no build target for: /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_2L.scala
+2026.03.25 13:51:39 INFO  no build target found for /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_2L.scala. Using presentation compiler with project's scala-library version: 3.8.0
+Mar 25, 2026 1:51:39 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1
+2026.03.25 13:51:38 INFO  no build target found for /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_2L.scala. Using presentation compiler with project's scala-library version: 3.8.0
+Mar 25, 2026 1:51:39 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4
+2026.03.25 13:51:42 INFO  time: code lens generation in 3.02s
+2026.03.25 13:51:44 INFO  no build target found for /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_2L.scala. Using presentation compiler with project's scala-library version: 3.8.0
+2026.03.25 13:51:48 INFO  no build target found for /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_3L.scala. Using presentation compiler with project's scala-library version: 3.8.0
+2026.03.25 13:51:48 INFO  no build target found for /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_3L.scala. Using presentation compiler with project's scala-library version: 3.8.0
+2026.03.25 13:51:48 WARN  no build target for: /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_3L.scala
+2026.03.25 13:51:48 INFO  no build target found for /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_3L.scala. Using presentation compiler with project's scala-library version: 3.8.0
+2026.03.25 13:51:48 INFO  no build target found for /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_3L.scala. Using presentation compiler with project's scala-library version: 3.8.0
+2026.03.25 13:51:49 INFO  no build target found for /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/Project_2_3L.scala. Using presentation compiler with project's scala-library version: 3.8.0

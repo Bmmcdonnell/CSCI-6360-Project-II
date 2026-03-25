@@ -42,3 +42,17 @@
 2026.03.19 17:41:15 INFO  shutting down Metals
 2026.03.25 12:59:18 INFO  Started: Metals version 1.6.6 in folders '/Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II' for client Visual Studio Code 1.112.0.
 2026.03.25 12:59:18 INFO  Memory monitor started
+2026.03.25 12:59:21 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.25 12:59:23 INFO  Running List(/usr/local/bin/scala-cli, setup-ide, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II)
+2026.03.25 12:59:23 INFO  Attempting to connect to the build server...
+2026.03.25 12:59:23 INFO  Running BSP server List(/usr/local/bin/scala-cli, bsp, --json-options, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-options-v2.json, --json-launcher-options, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-launcher-options.json, --envs-file, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-envs.json, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II)
+2026.03.25 12:59:23 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.metals/bsp.trace.json or /Users/gabriel/Library/Caches/org.scalameta.metals/bsp.trace.json
+2026.03.25 12:59:25 INFO  time: Connected to build server in 1.8s
+2026.03.25 12:59:25 INFO  Connected to Build server: scala-cli v1.12.0
+2026.03.25 12:59:25 INFO  time: Imported build in 0.15s
+2026.03.25 12:59:25 INFO  compiling csci-6360-project-ii_d5c0a6989e (3 scala sources)
+2026.03.25 12:59:27 INFO  time: compiled CSCI-6360-Project-II_d5c0a6989e in 2.25s
+2026.03.25 12:59:27 INFO  compiling csci-6360-project-ii_d5c0a6989e (3 scala sources)
+2026.03.25 12:59:29 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.25 12:59:29 INFO  time: compiled CSCI-6360-Project-II_d5c0a6989e in 2.16s
+2026.03.25 12:59:32 INFO  time: indexed workspace in 6.96s

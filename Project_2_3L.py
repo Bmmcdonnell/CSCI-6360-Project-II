@@ -10,106 +10,72 @@ from get_qof import get_qof
 from latex_tables import is_oos_comparison
 from save_plots import save_sorted_plot
 
-# Define the Model
-class NoHiddenLayerNN(nn.Module):
-    def __init__(self, input_size, output_size):
-        super().__init__()
-        self.flatten = nn.Flatten() 
-        self.linear_relu_stack = nn.Sequential(
-            nn.Linear(input_size, output_size),
-            nn.ReLU()
-        )
-        self.loss_fn = nn.MSELoss()
-        self.lr = 0.01
-        self.maxepochs = 400
+class OneHiddenLayerNNLeakyRelu(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(OneHiddenLayerNNLeakyRelu, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)  # Input to hidden layer
+        self.leaky_relu = nn.LeakyReLU()              # Activation function
+        self.fc2 = nn.Linear(hidden_size, output_size) # Hidden to output layer
         self.batch_size = 32
-        self.patience = 25      # How many epochs to wait before stopping
-        self.min_delta = 1e-4   # Minimum improvement required to reset the patience counter
-
+        self.patience = 25
+        self.min_delta = 1e-4
+        
     def forward(self, x):
-        x = self.flatten(x)
-        logits = self.linear_relu_stack(x)
-        return logits
-
-    def trainNN(self, X, y):
-        # Set Loss Function and Optimizer
-        loss_fn = self.loss_fn
-        optimizer = optim.SGD(self.parameters(), lr=self.lr)
+        out = self.fc1(x)   # Linear transformation
+        out = self.leaky_relu(out) # Non-linearity
+        out = self.fc2(out)  # Linear transformation to output
+        return out
+    def trainLeakyRelu(self, X_train, y_train, max_epochs=200, learning_rate=0.01):
+        self.train()  # Set the model to training mode
+        criterion = nn.MSELoss()  # Mean Squared Error Loss
+        optimizer = optim.SGD(self.parameters(), lr=learning_rate)  # Stochastic Gradient Descent
 
         batch_size = self.batch_size
 
-        # Combine X and y into a single dataset, then load it into a DataLoader
-        dataset = TensorDataset(X, y)
-        dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True) 
+        dataset = TensorDataset(X_train, y_train)
+        dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-        epochs = self.maxepochs 
-        print(f"Starting training with batch size {batch_size}...")
-
-        # --- EARLY STOPPING TRACKERS ---
         best_loss = float('inf')
         patience_counter = 0
 
-        for epoch in range(epochs):
-            epoch_loss = 0.0 
+        for epoch in range(max_epochs):
+            epoch_loss = 0.0
             
-            # --- THE MINI-BATCH LOOP ---
             for batch_X, batch_y in dataloader:
-                predictions = self(batch_X)
-                loss = loss_fn(predictions, batch_y)
-                
-                optimizer.zero_grad()
+            
+                outputs = self(batch_X)  # Forward pass
+                loss = criterion(outputs, batch_y)
                 loss.backward()
                 optimizer.step()
-                
-                epoch_loss += loss.item() 
-            
-            # Calculate the average loss across all batches
-            avg_loss = epoch_loss / len(dataloader) 
-
-            # Print the progress every 10 epochs
+                optimizer.zero_grad()
+                epoch_loss+=loss.item()
+            avg_loss = epoch_loss / len(dataloader)
             if (epoch + 1) % 10 == 0:
-                print(f"Epoch {epoch+1}/{epochs} | Avg Loss: {avg_loss:.4f}")
+                print(f"Epoch {epoch + 1}/{max_epochs} | Avg Loss: {avg_loss:.4f}")
 
-            # --- EARLY STOPPING LOGIC ---
-            # Check if the loss improved by at least min_delta
             if best_loss - avg_loss > self.min_delta:
                 best_loss = avg_loss
-                patience_counter = 0  # Reset counter if we see improvement
+                patience_counter = 0
             else:
-                patience_counter += 1 # Increment counter if no significant improvement
-
-            # Stop training if we've run out of patience
+                patience_counter += 1
             if patience_counter >= self.patience:
                 print(f"\nEarly stopping triggered at Epoch {epoch+1}!")
                 print(f"Loss hasn't improved by more than {self.min_delta} for {self.patience} consecutive epochs.")
                 break
-
-        print("\nTraining complete!")
-    
-    def testNN(self, X, y):
-        # Set the model to evaluation mode
-        self.eval() 
-        
-        # Need the same loss function to compare against training
-        loss_fn = self.loss_fn 
-        
-        # Disable gradient calculation
-        with torch.no_grad(): 
             
-            # Make predictions
-            predictions = self(X) 
-            
-            # Calculate the test loss
-            test_loss = loss_fn(predictions, y)
-            
+        print("Training Complete!")
+    def testLeakyRelu(self, X_test, y_test):
+        self.eval()  # Set the model to evaluation mode
+        loss_fn = nn.MSELoss()
+        with torch.no_grad():  # No need to compute gradients during testing
+            outputs = self(X_test)  # Forward pass
+            test_loss = loss_fn(outputs, y_test)
         print(f"Test Loss: {test_loss.item():.4f}")
-        
-        # Set the model back to training mode just in case
-        self.train() 
-        
-        return (predictions, test_loss.item())
+        self.train()   
+        return(outputs, test_loss.item())
+    
 
-def p2_auto_mpg_2L():
+def p2_auto_mpg_3L():
     # ==========================================
     # --- Data Loading ---
     # ==========================================
@@ -140,44 +106,44 @@ def p2_auto_mpg_2L():
     y_test_tensor = torch.tensor(y_test.to_numpy(), dtype=torch.float32)
 
     # Setup Variables and Instantiate Model
-    input_features = X.shape[1]
-    output_classes = y.shape[1]
-    model = NoHiddenLayerNN(input_size=input_features, output_size=output_classes)
+    # input_features = X.shape[1]
+    # output_classes = y.shape[1]
+    model = OneHiddenLayerNNLeakyRelu(input_size=X.shape[1], hidden_size=100, output_size=y.shape[1])
 
-    model.trainNN(X_tensor,y_tensor)
-    (IS_predictions, IS_loss) = model.testNN(X_tensor, y_tensor)
+    model.trainLeakyRelu(X_tensor,y_tensor)
+    (IS_predictions, IS_loss) = model.testLeakyRelu(X_tensor, y_tensor)
 
     y_numpy = y.to_numpy()
     preds_IS_numpy = IS_predictions.cpu().numpy()
     k = X.shape[1]
     qof_IS = get_qof(y_numpy, preds_IS_numpy, k)
 
-    save_sorted_plot(np.ravel(y_numpy), np.ravel(preds_IS_numpy), "Auto MPG", "Auto_MPG_P2", "2L NN", "2L", False)
+    save_sorted_plot(np.ravel(y_numpy), np.ravel(preds_IS_numpy), "Auto MPG", "Auto_MPG_P2", "3L NN", "3L", False)
 
     # print(qof_IS)
 
-    model.trainNN(X_train_tensor,y_train_tensor)
-    (OOS_predictions, OOS_loss) = model.testNN(X_test_tensor,y_test_tensor)
+    model.trainLeakyRelu(X_train_tensor,y_train_tensor)
+    (OOS_predictions, OOS_loss) = model.testLeakyRelu(X_test_tensor,y_test_tensor)
 
     y_test_numpy = y_test.to_numpy()  
     preds_OOS_numpy = OOS_predictions.cpu().numpy()
     k = X_train_scaled.shape[1]
     qof_OOS = get_qof(y_test_numpy, preds_OOS_numpy, k)
 
-    save_sorted_plot(np.ravel(y_test_numpy), np.ravel(preds_OOS_numpy), "Auto MPG", "Auto_MPG_P2", "2L NN", "2L", True)
+    save_sorted_plot(np.ravel(y_test_numpy), np.ravel(preds_OOS_numpy), "Auto MPG", "Auto_MPG_P2", "3L NN", "3L", True)
 
     # print(qof_OOS)
 
-    is_oos_comparison(qof_IS, qof_OOS, "Auto MPG", "2L NN")
+    is_oos_comparison(qof_IS, qof_OOS, "Auto MPG", "3L NN")
 
-def p2_housing_2L():
+def p2_housing_3L():
     # ==========================================
     # --- Data Loading ---
     # ==========================================
     oxy = pd.read_csv("datasets/cleaned_housing_with_intercept.csv")
     ox = oxy.drop('median_house_value', axis=1)
     X = ox.drop('intercept', axis=1)
-    y = oxy[['median_house_value']]
+    y = oxy[['median_house_value']] / 100000.0
 
     # ==========================================
     # --- Train-Test Split (80-20) ---
@@ -201,46 +167,46 @@ def p2_housing_2L():
     y_test_tensor = torch.tensor(y_test.to_numpy(), dtype=torch.float32)
 
     # Setup Variables and Instantiate Model
-    input_features = X.shape[1]
-    output_classes = y.shape[1]
-    model = NoHiddenLayerNN(input_size=input_features, output_size=output_classes)
+    # input_features = X.shape[1]
+    # output_classes = y.shape[1]
+    model = OneHiddenLayerNNLeakyRelu(input_size=X.shape[1], hidden_size=100, output_size=y.shape[1])
 
-    model.trainNN(X_tensor,y_tensor)
-    (IS_predictions, IS_loss) = model.testNN(X_tensor, y_tensor)
+    model.trainLeakyRelu(X_tensor,y_tensor)
+    (IS_predictions, IS_loss) = model.testLeakyRelu(X_tensor, y_tensor)
 
-    y_numpy = y.to_numpy()
-    preds_IS_numpy = IS_predictions.cpu().numpy()
+    y_numpy = y.to_numpy() * 100000.0
+    preds_IS_numpy = IS_predictions.cpu().numpy() * 100000.0
     k = X.shape[1]
     qof_IS = get_qof(y_numpy, preds_IS_numpy, k)
 
-    save_sorted_plot(np.ravel(y_numpy), np.ravel(preds_IS_numpy), "California House Prices", "Housing_P2", "2L NN", "2L", False)
+    save_sorted_plot(np.ravel(y_numpy), np.ravel(preds_IS_numpy), "California House Prices", "Housing_P2", "3L NN", "3L", False)
 
     # print(qof_IS)
 
-    model.trainNN(X_train_tensor,y_train_tensor)
-    (OOS_predictions, OOS_loss) = model.testNN(X_test_tensor,y_test_tensor)
+    model.trainLeakyRelu(X_train_tensor,y_train_tensor)
+    (OOS_predictions, OOS_loss) = model.testLeakyRelu(X_test_tensor,y_test_tensor)
 
-    y_test_numpy = y_test.to_numpy()  
-    preds_OOS_numpy = OOS_predictions.cpu().numpy()
+    y_test_numpy = y_test.to_numpy() * 100000.0
+    preds_OOS_numpy = OOS_predictions.cpu().numpy() * 100000.0
     k = X_train_scaled.shape[1]
     qof_OOS = get_qof(y_test_numpy, preds_OOS_numpy, k)
 
-    save_sorted_plot(np.ravel(y_test_numpy), np.ravel(preds_OOS_numpy), "California House Prices", "Housing_P2", "2L NN", "2L", True)
+    save_sorted_plot(np.ravel(y_test_numpy), np.ravel(preds_OOS_numpy), "California House Prices", "Housing_P2", "3L NN", "3L", True)
 
     # print(qof_OOS)
 
-    is_oos_comparison(qof_IS, qof_OOS, "California House Prices", "2LNN")
+    is_oos_comparison(qof_IS, qof_OOS, "California House Prices", "3L NN")
 
 
 
-def p2_insurance_2L():
+def p2_insurance_3L():
     # ==========================================
     # --- Data Loading ---
     # ==========================================
     oxy = pd.read_csv("datasets/cleaned_insurance_with_intercept.csv")
     ox = oxy.drop('charges', axis=1)
     X = ox.drop('intercept', axis=1)
-    y = oxy[['charges']]
+    y = oxy[['charges']] / 6000.0
 
     # ==========================================
     # --- Train-Test Split (80-20) ---
@@ -264,37 +230,37 @@ def p2_insurance_2L():
     y_test_tensor = torch.tensor(y_test.to_numpy(), dtype=torch.float32)
 
     # Setup Variables and Instantiate Model
-    input_features = X.shape[1]
-    output_classes = y.shape[1]
-    model = NoHiddenLayerNN(input_size=input_features, output_size=output_classes)
+    # input_features = X.shape[1]
+    # output_classes = y.shape[1]
+    model = OneHiddenLayerNNLeakyRelu(input_size=X.shape[1], hidden_size=100, output_size=y.shape[1])
 
-    model.trainNN(X_tensor,y_tensor)
-    (IS_predictions, IS_loss) = model.testNN(X_tensor, y_tensor)
+    model.trainLeakyRelu(X_tensor,y_tensor)
+    (IS_predictions, IS_loss) = model.testLeakyRelu(X_tensor, y_tensor)
 
-    y_numpy = y.to_numpy()
-    preds_IS_numpy = IS_predictions.cpu().numpy()
+    y_numpy = y.to_numpy() * 6000.0
+    preds_IS_numpy = IS_predictions.cpu().numpy() * 6000.0
     k = X.shape[1]
     qof_IS = get_qof(y_numpy, preds_IS_numpy, k)
 
-    save_sorted_plot(np.ravel(y_numpy), np.ravel(preds_IS_numpy), "Insurance Charges", "Insurance_P2", "2L NN", "2L", False)
+    save_sorted_plot(np.ravel(y_numpy), np.ravel(preds_IS_numpy), "Insurance Charges", "Insurance_P2", "3L NN", "3L", False)
 
     # print(qof_IS)
 
-    model.trainNN(X_train_tensor,y_train_tensor)
-    (OOS_predictions, OOS_loss) = model.testNN(X_test_tensor,y_test_tensor)
+    model.trainLeakyRelu(X_train_tensor,y_train_tensor)
+    (OOS_predictions, OOS_loss) = model.testLeakyRelu(X_test_tensor,y_test_tensor)
 
-    y_test_numpy = y_test.to_numpy()  
-    preds_OOS_numpy = OOS_predictions.cpu().numpy()
+    y_test_numpy = y_test.to_numpy()   * 6000.0
+    preds_OOS_numpy = OOS_predictions.cpu().numpy() * 6000.0
     k = X_train_scaled.shape[1]
     qof_OOS = get_qof(y_test_numpy, preds_OOS_numpy, k)
 
-    save_sorted_plot(np.ravel(y_test_numpy), np.ravel(preds_OOS_numpy), "Insurance Charges", "Insurance_P2", "2L NN", "2L", True)
+    save_sorted_plot(np.ravel(y_test_numpy), np.ravel(preds_OOS_numpy), "Insurance Charges", "Insurance_P2", "3L NN", "3L", True)
 
     # print(qof_OOS)
 
-    is_oos_comparison(qof_IS, qof_OOS, "Insurance Charges", "2LNN")
+    is_oos_comparison(qof_IS, qof_OOS, "Insurance Charges", "3L NN")
 
 
-# p2_auto_mpg_2L()
-# p2_housing_2L()
-# p2_insurance_2L()
+# p2_auto_mpg_3L()
+# p2_housing_3L()
+# p2_insurance_3L()

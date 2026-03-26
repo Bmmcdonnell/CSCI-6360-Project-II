@@ -19,8 +19,8 @@ def is_oos_comparison(is_qof, oos_qof, data_name, model_name):
     # ==========================================
     print("\\begin{table}[H]")
     print("\\centering")
-    print(f"\\caption{{Statsmodels - {data_name} {model_name}}}")
-    print(f"\\label{{tab:Statsmodels - {data_name} {model_name}}}")
+    print(f"\\caption{{PyTorch - {data_name} {model_name}}}")
+    print(f"\\label{{tab:PyTorch - {data_name} {model_name}}}")
     print("\\begin{tabular}{|c|c|c|}\\hline")
     print("Metric & In-Sample & 80-20 Split \\\\ \\hline \\hline")
     

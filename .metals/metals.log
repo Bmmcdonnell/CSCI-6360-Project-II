@@ -300,3 +300,50 @@ INFO: Unsupported notification method: $/setTrace
 2026.03.30 02:00:20 INFO  time: compiled CSCI-6360-Project-II_d5c0a6989e in 1.17s
 2026.03.30 02:00:22 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
 2026.03.30 02:00:22 INFO  time: indexed workspace in 5.56s
+2026.03.30 02:02:00 INFO  Shutting down server
+2026.03.30 02:02:00 INFO  Memory monitor stopped
+2026.03.30 02:02:00 INFO  shutting down Metals
+2026.03.30 02:02:00 INFO  Shut down connection with build server.
+2026.03.30 02:02:00 INFO  Exiting server
+2026.03.30 15:27:02 INFO  Started: Metals version 1.6.6 in folders '/Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II' for client Visual Studio Code 1.113.0.
+2026.03.30 15:27:02 INFO  Memory monitor started
+Mar 30, 2026 3:27:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.30 15:27:04 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.30 15:27:05 INFO  Attempting to connect to the build server...
+2026.03.30 15:27:05 INFO  Running BSP server List(/usr/local/bin/scala-cli, bsp, --json-options, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-options-v2.json, --json-launcher-options, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-launcher-options.json, --envs-file, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-envs.json, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II)
+2026.03.30 15:27:05 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.metals/bsp.trace.json or /Users/gabriel/Library/Caches/org.scalameta.metals/bsp.trace.json
+2026.03.30 15:27:07 INFO  time: Connected to build server in 1.72s
+2026.03.30 15:27:07 INFO  Connected to Build server: scala-cli v1.12.0
+2026.03.30 15:27:07 INFO  time: Imported build in 0.1s
+2026.03.30 15:27:07 INFO  compiling csci-6360-project-ii_d5c0a6989e (7 scala sources)
+2026.03.30 15:27:12 INFO  time: compiled CSCI-6360-Project-II_d5c0a6989e in 5.53s
+2026.03.30 15:27:12 INFO  compiling csci-6360-project-ii_d5c0a6989e (7 scala sources)
+2026.03.30 15:27:13 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.30 15:27:13 INFO  time: indexed workspace in 7.43s
+Mar 30, 2026 3:27:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Mar 30, 2026 3:27:16 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.30 15:27:16 INFO  time: compiled CSCI-6360-Project-II_d5c0a6989e in 3.85s
+2026.03.30 15:55:40 INFO  Shutting down server
+2026.03.30 15:55:40 INFO  Memory monitor stopped
+2026.03.30 15:55:40 INFO  shutting down Metals
+2026.03.30 15:55:40 INFO  Shut down connection with build server.
+2026.03.30 15:55:40 INFO  Exiting server
+2026.03.30 16:19:03 INFO  Started: Metals version 1.6.6 in folders '/Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II' for client Visual Studio Code 1.113.0.
+2026.03.30 16:19:03 INFO  Memory monitor started
+2026.03.30 16:19:04 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.30 16:19:05 INFO  Attempting to connect to the build server...
+2026.03.30 16:19:05 INFO  Running BSP server List(/usr/local/bin/scala-cli, bsp, --json-options, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-options-v2.json, --json-launcher-options, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-launcher-options.json, --envs-file, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-envs.json, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II)
+2026.03.30 16:19:05 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.metals/bsp.trace.json or /Users/gabriel/Library/Caches/org.scalameta.metals/bsp.trace.json
+2026.03.30 16:19:06 INFO  time: Connected to build server in 1.31s
+2026.03.30 16:19:06 INFO  Connected to Build server: scala-cli v1.12.0
+2026.03.30 16:19:07 INFO  compiling csci-6360-project-ii_d5c0a6989e (7 scala sources)
+Mar 30, 2026 4:19:07 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.30 16:19:09 INFO  time: compiled CSCI-6360-Project-II_d5c0a6989e in 2.12s
+2026.03.30 16:19:09 INFO  compiling csci-6360-project-ii_d5c0a6989e (7 scala sources)
+2026.03.30 16:19:09 INFO  time: compiled CSCI-6360-Project-II_d5c0a6989e in 0.87s
+2026.03.30 16:19:11 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.30 16:19:11 INFO  time: indexed workspace in 5.16s

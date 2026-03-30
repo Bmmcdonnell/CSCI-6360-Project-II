@@ -28,6 +28,26 @@ In this project, we will explore three different datasets using Neural Networks 
 	\item \textbf{Insurance Charges:} This dataset contains information about different primary beneficiaries of health insurance. The goal is to predict the primary beneficiaries insurance charges given their other characteristics. The dataset can be found at \url{https://www.kaggle.com/datasets/mirichoi0218/insurance}.
 \end{itemize}
 
+\subsection{Scalation Hyper-parameter Tuning}
+
+\subsubsection{Auto MPG}
+
+For the 2 layer neural network, batch sizes of 1, 4, 8, 16, and 32 were tested. The best results came from the batch size of 1. This should not be surprising, as it allows us to fit the data the closest. Since the Auto MPG dataset is fairly small, a batch size of 1 does not drastically increase the run time of the code. Next, we tested learning rates of 10, 1, 0.01, and 0.001. 0.001 yielded the best results, so we used that as the learning rate.
+
+For the 3 later neural network, multiple different combinations were attempted. The initial parameters tested were: learning rate = 0.01, batch size = 16, activation function on the hidden layer = geLU, activation function on the output layer = reLU, and number of nodes for the hidden layer = $2\times \text{x.dim2}$. We then proceeded to adjust one parameter at a time to see if the results would improve. After several iterations, the best results came from: learning rate = 0.01, batch size = 8, activation function on the hidden layer = sigmoid, activation function on the output layer = reLU, and number of nodes for the hidden layer = $3\times \text{x.dim2}$.
+
+\subsubsection{California House Prices}
+
+For the 2 layer neural network, batch sizes of 32 and 64 were tested. The best results came from the batch size of 32. Next, we tested learning rates of 10, 1, 0.01, and 0.001. 10 yielded the best results, but were still unsatisfactory, so we then tested 20, 25, and 30. 25 yielded the best results, so we used that as the learning rate.
+
+For the 3 later neural network, multiple different combinations were attempted. The initial parameters tested were: learning rate = 0.01, batch size = 32, activation function on the hidden layer = lreLU, activation function on the output layer = id, and number of nodes for the hidden layer = $16$. We then proceeded to adjust one parameter at a time to see if the results would improve. After several iterations, the best results came from: learning rate = 0.01, batch size = 32, activation function on the hidden layer = lreLU, activation function on the output layer = id, and number of nodes for the hidden layer = $3\times \text{x.dim2}$.
+
+\subsubsection{Insurance Charges}
+
+For the 2 layer neural network, batch sizes of 32 and 64 were tested. The best results came from the batch size of 32. Next, we tested learning rates of 10, 1, 0.01, and 0.001. 10 yielded the best results, but were still extremely unsatisfactory, so we then tested 50, 100, 150, and 200. 200 yielded the best results, so we used that as the learning rate.
+
+For the 3 later neural network, multiple different combinations were attempted. The initial parameters tested were: learning rate = 0.01, batch size = 32, activation function on the hidden layer = lreLU, activation function on the output layer = id, and number of nodes for the hidden layer = $\text{x.dim2}+1$. We then proceeded to adjust one parameter at a time to see if the results would improve. After several iterations, the best results came from: learning rate = 0.01, batch size = 16, activation function on the hidden layer = lreLU, activation function on the output layer = id, and number of nodes for the hidden layer = $2\times \text{x.dim2}$.
+
 \subsection{CNN Implementation}
 
 \subsubsection{Architecture}
@@ -433,7 +453,7 @@ PyTorch Stepwise Selection Order: Null, horsepower, model year, weight
 
 \subsection{4 Layer Neural Network}
 
-In PyTorch, the best results were found when using LeakyReLU as the activation function for both the hidden layers, identity as the activation function for the output layer, $100$ nodes in both the hidden layers, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - Auto MPG 4L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:Auto MPG 4L Plots}.
+In PyTorch, the best results were found when using LeakyReLU as the activation function for both the hidden layers, identity as the activation function for the output layer, $100$ nodes in the first hidden layer, $50$ nodes in the second hidden layer, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - Auto MPG 4L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:Auto MPG 4L Plots}.
 
 \begin{table}[H]
 \centering
@@ -441,21 +461,21 @@ In PyTorch, the best results were found when using LeakyReLU as the activation f
 \label{tab:PyTorch - Auto MPG 4L NN}
 \begin{tabular}{|c|c|c|}\hline
 Metric & In-Sample & 80-20 Split \\ \hline \hline
-rSq & 0.9368 & 0.9057 \\ \hline
-rSqBar & 0.9356 & 0.8964 \\ \hline
+rSq & 0.9106 & 0.9036 \\ \hline
+rSqBar & 0.9090 & 0.8941 \\ \hline
 sst & 23818.9935 & 4910.2699 \\ \hline
-sse & 1506.1940 & 462.8453 \\ \hline
-sde & 1.9805 & 2.5532 \\ \hline
-mse0 & 3.8423 & 5.8588 \\ \hline
-rmse & 1.9602 & 2.4205 \\ \hline
-mae & 1.3969 & 1.6990 \\ \hline
-smape & 5.9485 & 7.2746 \\ \hline
+sse & 2129.8379 & 473.3232 \\ \hline
+sde & 2.3551 & 2.5820 \\ \hline
+mse0 & 5.4333 & 5.9914 \\ \hline
+rmse & 2.3309 & 2.4477 \\ \hline
+mae & 1.7105 & 1.7191 \\ \hline
+smape & 7.3450 & 7.3980 \\ \hline
 m & 392.0000 & 79.0000 \\ \hline
 dfr & 8.0000 & 8.0000 \\ \hline
 df & 384.0000 & 71.0000 \\ \hline
-fStat & 711.0733 & 85.2788 \\ \hline
-aic & 543.6631 & 155.6677 \\ \hline
-bic & 575.4332 & 174.6232 \\ \hline
+fStat & 488.8069 & 83.1945 \\ \hline
+aic & 679.4754 & 157.4361 \\ \hline
+bic & 711.2455 & 176.3917 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -525,7 +545,7 @@ bic & 15121.522 & 10681.973 \\
 \end{table}
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{tabular}{cc}
     \includegraphics[width=0.5\textwidth]{fig/a1.png} &
@@ -537,7 +557,7 @@ bic & 15121.522 & 10681.973 \\
 \label{fig:cnn1}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 
 \begin{tabular}{cc}
@@ -925,7 +945,7 @@ Scalation Stepwise Selection Order: longitude
 
 \subsection{4 Layer Neural Network}
 
-In PyTorch, the best results were found when using LeakyReLU as the activation function for both the hidden layers, identity as the activation function for the output layer, $100$ nodes in both the hidden layers, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - California House Prices 4L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:California House Prices 4L Plots}.
+In PyTorch, the best results were found when using LeakyReLU as the activation function for both the hidden layers, identity as the activation function for the output layer, $100$ nodes in the first hidden layer, $50$ nodes in the second hidden layer, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - California House Prices 4L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:California House Prices 4L Plots}.
 
 \begin{table}[H]
 \centering
@@ -933,21 +953,21 @@ In PyTorch, the best results were found when using LeakyReLU as the activation f
 \label{tab:PyTorch - California House Prices 4L NN}
 \begin{tabular}{|c|c|c|}\hline
 Metric & In-Sample & 80-20 Split \\ \hline \hline
-rSq & 0.8487 & 0.8169 \\ \hline
-rSqBar & 0.8487 & 0.8164 \\ \hline
+rSq & 0.8403 & 0.8151 \\ \hline
+rSqBar & 0.8402 & 0.8146 \\ \hline
 sst & 272264434648930.1250 & 54723646809444.8281 \\ \hline
-sse & 41181537257287.0938 & 10017926659371.0547 \\ \hline
-sde & 44906.8688 & 49582.1229 \\ \hline
-mse0 & 2015442532.0456 & 2451168744.6467 \\ \hline
-rmse & 44893.6803 & 49509.2794 \\ \hline
-mae & 30100.2002 & 33668.9617 \\ \hline
-smape & 15.3759 & 17.0476 \\ \hline
+sse & 43473269654871.8516 & 10120939827333.9688 \\ \hline
+sde & 46139.4751 & 49836.3945 \\ \hline
+mse0 & 2127600922.7657 & 2476373826.1155 \\ \hline
+rmse & 46125.9246 & 49763.1774 \\ \hline
+mae & 31302.8345 & 33471.4831 \\ \hline
+smape & 16.0432 & 17.3908 \\ \hline
 m & 20433.0000 & 4087.0000 \\ \hline
 dfr & 12.0000 & 12.0000 \\ \hline
 df & 20421.0000 & 4075.0000 \\ \hline
-fStat & 9549.0685 & 1515.4151 \\ \hline
-aic & 437782.7298 & 88384.2484 \\ \hline
-bic & 437877.8287 & 88460.0352 \\ \hline
+fStat & 8955.9715 & 1496.5345 \\ \hline
+aic & 438889.3040 & 88426.0600 \\ \hline
+bic & 438984.4029 & 88501.8468 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1016,8 +1036,8 @@ bic & 47719.694 & 56731.305 \\
 \end{tabular}
 \end{table}
 
-\newpage
-\begin{figure}[h]
+
+\begin{figure}[H]
 \centering
 \begin{tabular}{cc}
     \includegraphics[width=0.5\textwidth]{fig/ch1.png} &
@@ -1029,7 +1049,7 @@ bic & 47719.694 & 56731.305 \\
 \label{fig:cnn1}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 
 \begin{tabular}{cc}
@@ -1429,7 +1449,7 @@ PyTorch Stepwise Selection Order: Null
 
 \subsection{4 Layer Neural Network}
 
-In PyTorch, the best results were found when using LeakyReLU as the activation function for both the hidden layers, identity as the activation function for the output layer, $100$ nodes in both the hidden layers, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - Insurance Charges 4L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:Insurance Charges 4L Plots}.
+In PyTorch, the best results were found when using LeakyReLU as the activation function for both the hidden layers, identity as the activation function for the output layer, $100$ nodes in the first hidden layer, $50$ nodes in the second hidden layer, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - Insurance Charges 4L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:Insurance Charges 4L Plots}.
 
 \begin{table}[H]
 \centering
@@ -1437,21 +1457,21 @@ In PyTorch, the best results were found when using LeakyReLU as the activation f
 \label{tab:PyTorch - Insurance Charges 4L NN}
 \begin{tabular}{|c|c|c|}\hline
 Metric & In-Sample & 80-20 Split \\ \hline \hline
-rSq & 0.8983 & 0.8767 \\ \hline
-rSqBar & 0.8978 & 0.8734 \\ \hline
+rSq & 0.8892 & 0.8645 \\ \hline
+rSqBar & 0.8886 & 0.8608 \\ \hline
 sst & 196074221568.3671 & 42646829902.3297 \\ \hline
-sse & 19935812189.1823 & 5259097272.7372 \\ \hline
-sde & 3871.6059 & 4497.4768 \\ \hline
-mse0 & 14899710.1563 & 19623497.2863 \\ \hline
-rmse & 3860.0143 & 4429.8417 \\ \hline
-mae & 2150.0006 & 2895.1120 \\ \hline
-smape & 21.6872 & 30.1824 \\ \hline
+sse & 21732380136.0741 & 5779783365.5487 \\ \hline
+sde & 4042.2933 & 4714.8633 \\ \hline
+mse0 & 16242436.5740 & 21566355.8416 \\ \hline
+rmse & 4030.1906 & 4643.9591 \\ \hline
+mae & 2387.5422 & 3235.5512 \\ \hline
+smape & 24.2923 & 32.2101 \\ \hline
 m & 1338.0000 & 268.0000 \\ \hline
 dfr & 8.0000 & 8.0000 \\ \hline
 df & 1330.0000 & 260.0000 \\ \hline
-fStat & 1468.8647 & 231.0475 \\ \hline
-aic & 22115.5484 & 4516.3199 \\ \hline
-bic & 22157.1399 & 4545.0477 \\ \hline
+fStat & 1333.6934 & 207.3052 \\ \hline
+aic & 22230.9985 & 4541.6209 \\ \hline
+bic & 22272.5900 & 4570.3488 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1519,10 +1539,10 @@ bic & 75955.040 & 45533.681 \\
 \bottomrule
 \end{tabular}
 \end{table}
-\newpage
 
 
-\begin{figure}[h]
+
+\begin{figure}[H]
 \centering
 \begin{tabular}{cc}
     \includegraphics[width=0.5\textwidth]{fig/ins1.png} &
@@ -1534,7 +1554,7 @@ bic & 75955.040 & 45533.681 \\
 \label{fig:cnn1}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 
 \begin{tabular}{cc}
@@ -1583,21 +1603,21 @@ bic & -1073.62 & -785.471 \\ \hline
 \label{tab:PyTorch: - Auto MPG In-Sample QoF Comparison}
 \begin{tabular}{|c|c|c|c|c|} \hline
 Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
-rSq & 0.8232 & 0.8855 & 0.9368 & 0.8920 \\ \hline
-rSqBar & 0.8199 & 0.8835 & 0.9356 & - \\ \hline
+rSq & 0.8232 & 0.8855 & 0.9106 & 0.8920 \\ \hline
+rSqBar & 0.8199 & 0.8835 & 0.9090 & - \\ \hline
 sst & 23818.9935 & 23818.9935 & 23818.9935 & 23818.9940 \\ \hline
-sse & 4211.9875 & 2726.1212 & 1506.1940 & 2567.6090 \\ \hline
-sde & 3.3119 & 2.6644 & 1.9805 & - \\ \hline
-mse0 & 10.7449 & 6.9544 & 3.8423 & 6.5500 \\ \hline
-rmse & 3.2779 & 2.6371 & 1.9602 & 2.5590 \\ \hline
-mae & 2.4941 & 1.8997 & 1.3969 & 1.8470 \\ \hline
-smape & 11.4175 & 8.0857 & 5.9485 & - \\ \hline
+sse & 4211.9875 & 2726.1212 & 2129.8379 & 2567.6090 \\ \hline
+sde & 3.3119 & 2.6644 & 2.3551 & - \\ \hline
+mse0 & 10.7449 & 6.9544 & 5.4333 & 6.5500 \\ \hline
+rmse & 3.2779 & 2.6371 & 2.3309 & 2.5590 \\ \hline
+mae & 2.4941 & 1.8997 & 1.7105 & 1.8470 \\ \hline
+smape & 11.4175 & 8.0857 & 7.3450 & - \\ \hline
 m & 392.0000 & 392.0000 & 392.0000 & 392.0000 \\ \hline
 dfr & 8.0000 & 8.0000 & 8.0000 & 8.0000 \\ \hline
 df & 384.0000 & 384.0000 & 384.0000 & 384.0000 \\ \hline
-fStat & 223.4423 & 371.3914 & 711.0733 & - \\ \hline
-aic & 946.7758 & 776.2343 & 543.6631 & 5554.7520 \\ \hline
-bic & 978.5459 & 808.0044 & 575.4332 & 15121.5220 \\ \hline
+fStat & 223.4423 & 371.3914 & 488.8069 & - \\ \hline
+aic & 946.7758 & 776.2343 & 679.4754 & 5554.7520 \\ \hline
+bic & 978.5459 & 808.0044 & 711.2455 & 15121.5220 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1631,21 +1651,21 @@ bic & -165.198 & -152.464 \\ \hline
 \label{tab:PyTorch: - Auto MPG Out-of-Sample QoF Comparison}
 \begin{tabular}{|c|c|c|c|c|} \hline
 Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
-rSq & 0.8391 & 0.9095 & 0.9057 & 0.8590 \\ \hline
-rSqBar & 0.8232 & 0.9005 & 0.8964 & - \\ \hline
+rSq & 0.8391 & 0.9095 & 0.9036 & 0.8590 \\ \hline
+rSqBar & 0.8232 & 0.9005 & 0.8941 & - \\ \hline
 sst & 4910.2699 & 4910.2699 & 4910.2699 & 4032.2060 \\ \hline
-sse & 790.2830 & 444.5322 & 462.8453 & 568.9520 \\ \hline
-sde & 3.3363 & 2.5022 & 2.5532 & - \\ \hline
-mse0 & 10.0036 & 5.6270 & 5.8588 & 7.2020 \\ \hline
-rmse & 3.1628 & 2.3721 & 2.4205 & 2.6840 \\ \hline
-mae & 2.4081 & 1.6043 & 1.6990 & 2.0460 \\ \hline
-smape & 11.1501 & 7.0419 & 7.2746 & - \\ \hline
+sse & 790.2830 & 444.5322 & 473.3232 & 568.9520 \\ \hline
+sde & 3.3363 & 2.5022 & 2.5820 & - \\ \hline
+mse0 & 10.0036 & 5.6270 & 5.9914 & 7.2020 \\ \hline
+rmse & 3.1628 & 2.3721 & 2.4477 & 2.6840 \\ \hline
+mae & 2.4081 & 1.6043 & 1.7191 & 2.0460 \\ \hline
+smape & 11.1501 & 7.0419 & 7.3980 & - \\ \hline
 m & 79.0000 & 79.0000 & 79.0000 & 79.0000 \\ \hline
 dfr & 8.0000 & 8.0000 & 8.0000 & 8.0000 \\ \hline
 df & 71.0000 & 71.0000 & 71.0000 & 71.0000 \\ \hline
-fStat & 46.2681 & 89.1576 & 85.2788 & - \\ \hline
-aic & 197.9325 & 152.4784 & 155.6677 & 4973.9740 \\ \hline
-bic & 216.8881 & 171.4340 & 174.6232 & 10681.9730 \\ \hline
+fStat & 46.2681 & 89.1576 & 83.1945 & - \\ \hline
+aic & 197.9325 & 152.4784 & 157.4361 & 4973.9740 \\ \hline
+bic & 216.8881 & 171.4340 & 176.3917 & 10681.9730 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1681,21 +1701,21 @@ bic & -256788 & -16338.3 \\ \hline
 \label{tab:PyTorch: - California House Prices In-Sample QoF Comparison}
 \begin{tabular}{|c|c|c|c|c|} \hline
 Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
-rSq & 0.6468 & 0.8057 & 0.8487 & 0.7760 \\ \hline
-rSqBar & 0.6466 & 0.8056 & 0.8487 & - \\ \hline
+rSq & 0.6468 & 0.8057 & 0.8403 & 0.7760 \\ \hline
+rSqBar & 0.6466 & 0.8056 & 0.8402 & - \\ \hline
 sst & 272264434648930.1875 & 272264434648930.1250 & 272264434648930.1250 & 27483.1990 \\ \hline
-sse & 96172625731084.4375 & 52901444882088.6094 & 41181537257287.0938 & 6166.5940 \\ \hline
-sde & 68625.7706 & 50897.3609 & 44906.8688 & - \\ \hline
-mse0 & 4706730569.7198 & 2589019961.9287 & 2015442532.0456 & 0.2990 \\ \hline
-rmse & 68605.6162 & 50882.4131 & 44893.6803 & 0.5470 \\ \hline
-mae & 49654.9430 & 34838.6035 & 30100.2002 & 0.3770 \\ \hline
-smape & 26.7647 & 18.1115 & 15.3759 & - \\ \hline
+sse & 96172625731084.4375 & 52901444882088.6094 & 43473269654871.8516 & 6166.5940 \\ \hline
+sde & 68625.7706 & 50897.3609 & 46139.4751 & - \\ \hline
+mse0 & 4706730569.7198 & 2589019961.9287 & 2127600922.7657 & 0.2990 \\ \hline
+rmse & 68605.6162 & 50882.4131 & 46125.9246 & 0.5470 \\ \hline
+mae & 49654.9430 & 34838.6035 & 31302.8345 & 0.3770 \\ \hline
+smape & 26.7647 & 18.1115 & 16.0432 & - \\ \hline
 m & 20433.0000 & 20433.0000 & 20433.0000 & 20640.0000 \\ \hline
 dfr & 12.0000 & 12.0000 & 12.0000 & 12.0000 \\ \hline
 df & 20421.0000 & 20421.0000 & 20421.0000 & 20421.0000 \\ \hline
-fStat & 3115.8995 & 7056.5363 & 9549.0685 & - \\ \hline
-aic & 455113.0754 & 442899.9831 & 437782.7298 & -10308.8600 \\ \hline
-bic & 455208.1743 & 442995.0819 & 437877.8287 & 47719.6940 \\ \hline
+fStat & 3115.8995 & 7056.5363 & 8955.9715 & - \\ \hline
+aic & 455113.0754 & 442899.9831 & 438889.3040 & -10308.8600 \\ \hline
+bic & 455208.1743 & 442995.0819 & 438984.4029 & 47719.6940 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1729,21 +1749,21 @@ bic & -51243.9 & -3345.51 \\ \hline
 \label{tab:PyTorch: - California House Prices Out-of-Sample QoF Comparison}
 \begin{tabular}{|c|c|c|c|c|} \hline
 Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
-rSq & 0.6516 & 0.7961 & 0.8169 & 0.7210 \\ \hline
-rSqBar & 0.6506 & 0.7956 & 0.8164 & - \\ \hline
+rSq & 0.6516 & 0.7961 & 0.8151 & 0.7210 \\ \hline
+rSqBar & 0.6506 & 0.7956 & 0.8146 & - \\ \hline
 sst & 54723646809444.8438 & 54723646809444.8281 & 54723646809444.8281 & 5409.3680 \\ \hline
-sse & 19066274074331.2266 & 11156430483920.8633 & 10017926659371.0547 & 1509.2800 \\ \hline
-sde & 68402.0487 & 52323.7456 & 49582.1229 & - \\ \hline
-mse0 & 4665102538.3732 & 2729735865.8970 & 2451168744.6467 & 0.3660 \\ \hline
-rmse & 68301.5559 & 52246.8742 & 49509.2794 & 0.6050 \\ \hline
-mae & 50131.4253 & 35574.6590 & 33668.9617 & 0.4450 \\ \hline
-smape & 26.6343 & 18.1492 & 17.0476 & - \\ \hline
+sse & 19066274074331.2266 & 11156430483920.8633 & 10120939827333.9688 & 1509.2800 \\ \hline
+sde & 68402.0487 & 52323.7456 & 49836.3945 & - \\ \hline
+mse0 & 4665102538.3732 & 2729735865.8970 & 2476373826.1155 & 0.3660 \\ \hline
+rmse & 68301.5559 & 52246.8742 & 49763.1774 & 0.6050 \\ \hline
+mae & 50131.4253 & 35574.6590 & 33471.4831 & 0.4450 \\ \hline
+smape & 26.6343 & 18.1492 & 17.3908 & - \\ \hline
 m & 4087.0000 & 4087.0000 & 4087.0000 & 4128.0000 \\ \hline
 dfr & 12.0000 & 12.0000 & 12.0000 & 12.0000 \\ \hline
 df & 4075.0000 & 4075.0000 & 4075.0000 & 4075.0000 \\ \hline
-fStat & 635.0821 & 1326.1142 & 1515.4151 & - \\ \hline
-aic & 91014.4163 & 88824.1727 & 88384.2484 & 10472.5700 \\ \hline
-bic & 91090.2031 & 88899.9595 & 88460.0352 & 56731.3050 \\ \hline
+fStat & 635.0821 & 1326.1142 & 1496.5345 & - \\ \hline
+aic & 91014.4163 & 88824.1727 & 88426.0600 & 10472.5700 \\ \hline
+bic & 91090.2031 & 88899.9595 & 88501.8468 & 56731.3050 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1779,21 +1799,21 @@ bic & -13561.3 & -1422.08 \\ \hline
 \label{tab:PyTorch: - Insurance Charges In-Sample QoF Comparison}
 \begin{tabular}{|c|c|c|c|c|} \hline
 Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
-rSq & 0.7516 & 0.8766 & 0.8983 & 0.7490 \\ \hline
-rSqBar & 0.7503 & 0.8760 & 0.8978 & - \\ \hline
+rSq & 0.7516 & 0.8766 & 0.8892 & 0.7490 \\ \hline
+rSqBar & 0.7503 & 0.8760 & 0.8886 & - \\ \hline
 sst & 196074221568.3671 & 196074221568.3671 & 196074221568.3671 & 196074242048.0000 \\ \hline
-sse & 48702200251.0962 & 24191406710.2515 & 19935812189.1823 & 49236451328.0000 \\ \hline
-sde & 6051.2970 & 4264.8596 & 3871.6059 & - \\ \hline
-mse0 & 36399252.8035 & 18080274.0734 & 14899710.1563 & 36798543.5930 \\ \hline
-rmse & 6033.1793 & 4252.0906 & 3860.0143 & 6066.1800 \\ \hline
-mae & 4158.4738 & 2466.8147 & 2150.0006 & 3993.6670 \\ \hline
-smape & 39.1264 & 23.6520 & 21.6872 & - \\ \hline
+sse & 48702200251.0962 & 24191406710.2515 & 21732380136.0741 & 49236451328.0000 \\ \hline
+sde & 6051.2970 & 4264.8596 & 4042.2933 & - \\ \hline
+mse0 & 36399252.8035 & 18080274.0734 & 16242436.5740 & 36798543.5930 \\ \hline
+rmse & 6033.1793 & 4252.0906 & 4030.1906 & 6066.1800 \\ \hline
+mae & 4158.4738 & 2466.8147 & 2387.5422 & 3993.6670 \\ \hline
+smape & 39.1264 & 23.6520 & 24.2923 & - \\ \hline
 m & 1338.0000 & 1338.0000 & 1338.0000 & 1338.0000 \\ \hline
 dfr & 8.0000 & 8.0000 & 8.0000 & 8.0000 \\ \hline
 df & 1330.0000 & 1330.0000 & 1330.0000 & 1330.0000 \\ \hline
-fStat & 503.0696 & 1181.2260 & 1468.8647 & - \\ \hline
-aic & 23310.6587 & 22374.4243 & 22115.5484 & 37935.2560 \\ \hline
-bic & 23352.2501 & 22416.0158 & 22157.1399 & 75955.0400 \\ \hline
+fStat & 503.0696 & 1181.2260 & 1333.6934 & - \\ \hline
+aic & 23310.6587 & 22374.4243 & 22230.9985 & 37935.2560 \\ \hline
+bic & 23352.2501 & 22416.0158 & 22272.5900 & 75955.0400 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1827,21 +1847,21 @@ bic & -2696.43 & -293.842 \\ \hline
 \label{tab:PyTorch: - Insurance Charges Out-of-Sample QoF Comparison}
 \begin{tabular}{|c|c|c|c|c|} \hline
 Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
-rSq & 0.8007 & 0.8891 & 0.8767 & 0.7820 \\ \hline
-rSqBar & 0.7953 & 0.8861 & 0.8734 & - \\ \hline
+rSq & 0.8007 & 0.8891 & 0.8645 & 0.7820 \\ \hline
+rSqBar & 0.7953 & 0.8861 & 0.8608 & - \\ \hline
 sst & 42646829902.3297 & 42646829902.3297 & 42646829902.3297 & 41606660096.0000 \\ \hline
-sse & 8498989265.5920 & 4730156280.8836 & 5259097272.7372 & 9083892736.0000 \\ \hline
-sde & 5717.3788 & 4265.3146 & 4497.4768 & - \\ \hline
-mse0 & 31712646.5134 & 17649836.8690 & 19623497.2863 & 33895122.1490 \\ \hline
-rmse & 5631.3983 & 4201.1709 & 4429.8417 & 5821.9520 \\ \hline
-mae & 3932.9280 & 2735.5215 & 2895.1120 & 3131.3840 \\ \hline
-smape & 36.6337 & 27.4890 & 30.1824 & - \\ \hline
+sse & 8498989265.5920 & 4730156280.8836 & 5779783365.5487 & 9083892736.0000 \\ \hline
+sde & 5717.3788 & 4265.3146 & 4714.8633 & - \\ \hline
+mse0 & 31712646.5134 & 17649836.8690 & 21566355.8416 & 33895122.1490 \\ \hline
+rmse & 5631.3983 & 4201.1709 & 4643.9591 & 5821.9520 \\ \hline
+mae & 3932.9280 & 2735.5215 & 3235.5512 & 3131.3840 \\ \hline
+smape & 36.6337 & 27.4890 & 32.2101 & - \\ \hline
 m & 268.0000 & 268.0000 & 268.0000 & 268.0000 \\ \hline
 dfr & 8.0000 & 8.0000 & 8.0000 & 8.0000 \\ \hline
 df & 260.0000 & 260.0000 & 260.0000 & 260.0000 \\ \hline
-fStat & 130.5808 & 260.5182 & 231.0475 & - \\ \hline
-aic & 4644.9566 & 4487.9115 & 4516.3199 & 19272.7930 \\ \hline
-bic & 4673.6845 & 4516.6394 & 4545.0477 & 45533.6810 \\ \hline
+fStat & 130.5808 & 260.5182 & 207.3052 & - \\ \hline
+aic & 4644.9566 & 4487.9115 & 4541.6209 & 19272.7930 \\ \hline
+bic & 4673.6845 & 4516.6394 & 4570.3488 & 45533.6810 \\ \hline
 \end{tabular}
 \end{table}
 

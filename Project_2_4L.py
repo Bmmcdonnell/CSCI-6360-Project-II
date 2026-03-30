@@ -125,7 +125,7 @@ def p2_auto_mpg_4L():
     # Setup Variables and Instantiate Model
     # input_features = X.shape[1]
     # output_classes = y.shape[1]
-    model = TwoHiddenLayerNNLeakyRelu(input_size=X.shape[1], hidden_size1=100, hidden_size2=100, output_size=y.shape[1])
+    model = TwoHiddenLayerNNLeakyRelu(input_size=X.shape[1], hidden_size1=100, hidden_size2=50, output_size=y.shape[1])
 
     model.trainLeakyRelu(X_tensor,y_tensor)
     (IS_predictions, IS_loss) = model.testLeakyRelu(X_tensor, y_tensor)
@@ -186,7 +186,7 @@ def p2_housing_4L():
     # Setup Variables and Instantiate Model
     # input_features = X.shape[1]
     # output_classes = y.shape[1]
-    model = TwoHiddenLayerNNLeakyRelu(input_size=X.shape[1], hidden_size1=100, hidden_size2=100, output_size=y.shape[1])
+    model = TwoHiddenLayerNNLeakyRelu(input_size=X.shape[1], hidden_size1=100, hidden_size2=50, output_size=y.shape[1])
 
     model.trainLeakyRelu(X_tensor,y_tensor)
     (IS_predictions, IS_loss) = model.testLeakyRelu(X_tensor, y_tensor)
@@ -249,7 +249,7 @@ def p2_insurance_4L():
     # Setup Variables and Instantiate Model
     # input_features = X.shape[1]
     # output_classes = y.shape[1]
-    model = TwoHiddenLayerNNLeakyRelu(input_size=X.shape[1], hidden_size1=100, hidden_size2=100, output_size=y.shape[1])
+    model = TwoHiddenLayerNNLeakyRelu(input_size=X.shape[1], hidden_size1=100, hidden_size2=50, output_size=y.shape[1])
 
     model.trainLeakyRelu(X_tensor,y_tensor)
     (IS_predictions, IS_loss) = model.testLeakyRelu(X_tensor, y_tensor)
@@ -280,4 +280,4 @@ def p2_insurance_4L():
 
 # p2_auto_mpg_4L()
 # p2_housing_4L()
-p2_insurance_4L()
+# p2_insurance_4L()

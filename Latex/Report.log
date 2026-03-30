@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.10)  26 MAR 2026 02:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.10)  30 MAR 2026 01:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -350,7 +350,58 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count298
 \l__pdf_internal_box=\box55
 )
-(./Report.aux)
+(./Report.aux
+
+LaTeX Warning: Label `tab:Auto_MPG_(In-Sample)' multiply defined.
+
+
+LaTeX Warning: Label `tab:Auto_MPG_(In-Sample)@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:cnn1' multiply defined.
+
+
+LaTeX Warning: Label `fig:cnn1@cref' multiply defined.
+
+
+LaTeX Warning: Label `tab:California_Housing_(In-Sample)' multiply defined.
+
+
+LaTeX Warning: Label `tab:California_Housing_(In-Sample)@cref' multiply defined
+.
+
+
+LaTeX Warning: Label `fig:cnn1' multiply defined.
+
+
+LaTeX Warning: Label `fig:cnn1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:cnn1' multiply defined.
+
+
+LaTeX Warning: Label `fig:cnn1@cref' multiply defined.
+
+
+LaTeX Warning: Label `tab:Insurance_Charges_(In-Sample)' multiply defined.
+
+
+LaTeX Warning: Label `tab:Insurance_Charges_(In-Sample)@cref' multiply defined.
+
+
+
+LaTeX Warning: Label `fig:cnn1' multiply defined.
+
+
+LaTeX Warning: Label `fig:cnn1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:cnn1' multiply defined.
+
+
+LaTeX Warning: Label `fig:cnn1@cref' multiply defined.
+
+)
 \openout1 = `Report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -448,206 +499,793 @@ Package hyperref Info: Link coloring ON on input line 17.
 \@outlinefile=\write3
 \openout3 = `Report.out'.
 
- [1
+<fig/CNN.png, id=123, 585.18625pt x 528.97626pt>
+File: fig/CNN.png Graphic file (type png)
+<use fig/CNN.png>
+Package pdftex.def Info: fig/CNN.png  used on input line 38.
+(pdftex.def)             Requested size: 306.56592pt x 277.12747pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--49
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--49
+
+ []
+
+[1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<../Auto_MPG_P2/Scalation_2L_In_Sample.png, id=95, 1606.0pt x 1405.25pt>
+al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./fig/CN
+N.png>] [2]
+<../Auto_MPG_P2/Scalation_2L_In_Sample.png, id=151, 1606.0pt x 1405.25pt>
 File: ../Auto_MPG_P2/Scalation_2L_In_Sample.png Graphic file (type png)
 <use ../Auto_MPG_P2/Scalation_2L_In_Sample.png>
 Package pdftex.def Info: ../Auto_MPG_P2/Scalation_2L_In_Sample.png  used on inp
-ut line 91.
+ut line 110.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Auto_MPG_P2/Scalation_2L_80_20.png, id=96, 1606.0pt x 1405.25pt>
+<../Auto_MPG_P2/Scalation_2L_80_20.png, id=152, 1606.0pt x 1405.25pt>
 File: ../Auto_MPG_P2/Scalation_2L_80_20.png Graphic file (type png)
 <use ../Auto_MPG_P2/Scalation_2L_80_20.png>
 Package pdftex.def Info: ../Auto_MPG_P2/Scalation_2L_80_20.png  used on input l
-ine 96.
+ine 115.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Auto_MPG_P2/PyTorch_2L_In_Sample.png, id=97, 722.7pt x 433.62pt>
+<../Auto_MPG_P2/PyTorch_2L_In_Sample.png, id=153, 722.7pt x 433.62pt>
 File: ../Auto_MPG_P2/PyTorch_2L_In_Sample.png Graphic file (type png)
 <use ../Auto_MPG_P2/PyTorch_2L_In_Sample.png>
 Package pdftex.def Info: ../Auto_MPG_P2/PyTorch_2L_In_Sample.png  used on input
- line 104.
+ line 123.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
-<../Auto_MPG_P2/PyTorch_2L_80_20.png, id=99, 722.7pt x 433.62pt>
+<../Auto_MPG_P2/PyTorch_2L_80_20.png, id=154, 722.7pt x 433.62pt>
 File: ../Auto_MPG_P2/PyTorch_2L_80_20.png Graphic file (type png)
 <use ../Auto_MPG_P2/PyTorch_2L_80_20.png>
 Package pdftex.def Info: ../Auto_MPG_P2/PyTorch_2L_80_20.png  used on input lin
-e 109.
+e 128.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
- [2 <../Auto_MPG_P2/Scalation_2L_In_Sample.png (PNG copy)> <../Auto_MPG_P2/Scal
+ [3 <../Auto_MPG_P2/Scalation_2L_In_Sample.png (PNG copy)> <../Auto_MPG_P2/Scal
 ation_2L_80_20.png (PNG copy)> <../Auto_MPG_P2/PyTorch_2L_In_Sample.png> <../Au
 to_MPG_P2/PyTorch_2L_80_20.png>]
-<../Auto_MPG_P2/Scalation_3L_In_Sample.png, id=109, 1606.0pt x 1405.25pt>
+<../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Forward.png, id=161, 1686.3p
+t x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Forward.png Graphic fil
+e (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Forw
+ard.png  used on input line 147.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png, id=162, 168
+6.3pt x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png Graphic
+ file (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_
+Forward.png  used on input line 152.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png, id=163, 722.7pt x
+ 433.62pt>
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png Graphic file 
+(type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forwar
+d.png  used on input line 160.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+<../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png, id=164, 722.7
+pt x 433.62pt>
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png Graphic f
+ile (type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Fo
+rward.png  used on input line 165.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+<../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Backward.png, id=165, 1686.3
+pt x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Backward.png Graphic fi
+le (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Backward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Back
+ward.png  used on input line 184.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png, id=166, 16
+86.3pt x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png Graphi
+c file (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_
+Backward.png  used on input line 189.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png Graphic file 
+(type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forwar
+d.png  used on input line 197.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png Graphic f
+ile (type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Fo
+rward.png  used on input line 202.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [4 <../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Forward.png (PNG copy)> 
+<../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png (PNG copy)> 
+<../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png> <../Auto_MPG_P2_F
+eature_Selection/PyTorch_2L_AIC_BIC_Forward.png>]
+<../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png, id=175, 1686.3
+pt x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png Graphic fi
+le (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Step
+wise.png  used on input line 219.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png, id=176, 16
+86.3pt x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png Graphi
+c file (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_
+Stepwise.png  used on input line 224.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png Graphic file 
+(type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forwar
+d.png  used on input line 232.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png Graphic f
+ile (type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Fo
+rward.png  used on input line 237.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [5 <../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Backward.png (PNG copy)>
+ <../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png (PNG copy)
+>] [6 <../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png (PNG copy
+)> <../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png (PNG cop
+y)>]
+<../Auto_MPG_P2/Scalation_3L_In_Sample.png, id=195, 1606.0pt x 1405.25pt>
 File: ../Auto_MPG_P2/Scalation_3L_In_Sample.png Graphic file (type png)
 <use ../Auto_MPG_P2/Scalation_3L_In_Sample.png>
 Package pdftex.def Info: ../Auto_MPG_P2/Scalation_3L_In_Sample.png  used on inp
-ut line 174.
+ut line 302.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Auto_MPG_P2/Scalation_3L_80_20.png, id=110, 1606.0pt x 1405.25pt>
+<../Auto_MPG_P2/Scalation_3L_80_20.png, id=196, 1606.0pt x 1405.25pt>
 File: ../Auto_MPG_P2/Scalation_3L_80_20.png Graphic file (type png)
 <use ../Auto_MPG_P2/Scalation_3L_80_20.png>
 Package pdftex.def Info: ../Auto_MPG_P2/Scalation_3L_80_20.png  used on input l
-ine 179.
+ine 307.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Auto_MPG_P2/PyTorch_3L_In_Sample.png, id=111, 722.7pt x 433.62pt>
+<../Auto_MPG_P2/PyTorch_3L_In_Sample.png, id=197, 722.7pt x 433.62pt>
 File: ../Auto_MPG_P2/PyTorch_3L_In_Sample.png Graphic file (type png)
 <use ../Auto_MPG_P2/PyTorch_3L_In_Sample.png>
 Package pdftex.def Info: ../Auto_MPG_P2/PyTorch_3L_In_Sample.png  used on input
- line 187.
+ line 315.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
-<../Auto_MPG_P2/PyTorch_3L_80_20.png, id=112, 722.7pt x 433.62pt>
+<../Auto_MPG_P2/PyTorch_3L_80_20.png, id=198, 722.7pt x 433.62pt>
 File: ../Auto_MPG_P2/PyTorch_3L_80_20.png Graphic file (type png)
 <use ../Auto_MPG_P2/PyTorch_3L_80_20.png>
 Package pdftex.def Info: ../Auto_MPG_P2/PyTorch_3L_80_20.png  used on input lin
-e 192.
+e 320.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
- [3] [4 <../Auto_MPG_P2/Scalation_3L_In_Sample.png (PNG copy)> <../Auto_MPG_P2/
-Scalation_3L_80_20.png (PNG copy)> <../Auto_MPG_P2/PyTorch_3L_In_Sample.png> <.
-./Auto_MPG_P2/PyTorch_3L_80_20.png>]
-<../Housing_P2/Scalation_2L_In_Sample.png, id=133, 1606.0pt x 1405.25pt>
+ [7]
+<../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Forward.png, id=204, 1686.3p
+t x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Forward.png Graphic fil
+e (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Forw
+ard.png  used on input line 339.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png, id=205, 168
+6.3pt x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png Graphic
+ file (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_
+Forward.png  used on input line 344.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png, id=206, 722.7pt x
+ 433.62pt>
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png Graphic file 
+(type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forwar
+d.png  used on input line 352.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+<../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png, id=207, 722.7
+pt x 433.62pt>
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png Graphic f
+ile (type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Fo
+rward.png  used on input line 357.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [8 <../Auto_MPG_P2/Scalation_3L_In_Sample.png (PNG copy)> <../Auto_MPG_P2/Scal
+ation_3L_80_20.png (PNG copy)> <../Auto_MPG_P2/PyTorch_3L_In_Sample.png> <../Au
+to_MPG_P2/PyTorch_3L_80_20.png>]
+<../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Backward.png, id=214, 1686.3
+pt x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Backward.png Graphic fi
+le (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Backward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Back
+ward.png  used on input line 374.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png, id=215, 16
+86.3pt x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png Graphi
+c file (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_
+Backward.png  used on input line 379.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png Graphic file 
+(type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forwar
+d.png  used on input line 387.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png Graphic f
+ile (type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Fo
+rward.png  used on input line 392.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [9 <../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Forward.png (PNG copy)> 
+<../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png (PNG copy)> 
+<../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png> <../Auto_MPG_P2_F
+eature_Selection/PyTorch_3L_AIC_BIC_Forward.png>]
+<../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Stepwise.png, id=223, 1686.3
+pt x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Stepwise.png Graphic fi
+le (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Stepwise.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Step
+wise.png  used on input line 409.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Stepwise.png, id=224, 16
+86.3pt x 1475.5125pt>
+File: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Stepwise.png Graphi
+c file (type png)
+<use ../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Stepwise.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_
+Stepwise.png  used on input line 414.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png Graphic file 
+(type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forwar
+d.png  used on input line 422.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+File: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png Graphic f
+ile (type png)
+<use ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Fo
+rward.png  used on input line 427.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [10 <../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Backward.png (PNG copy)
+> <../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png (PNG copy
+)>] [11 <../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Stepwise.png (PNG co
+py)> <../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Stepwise.png (PNG c
+opy)>]
+<../Auto_MPG_P2/PyTorch_4L_In_Sample.png, id=239, 722.7pt x 433.62pt>
+File: ../Auto_MPG_P2/PyTorch_4L_In_Sample.png Graphic file (type png)
+<use ../Auto_MPG_P2/PyTorch_4L_In_Sample.png>
+Package pdftex.def Info: ../Auto_MPG_P2/PyTorch_4L_In_Sample.png  used on input
+ line 467.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+<../Auto_MPG_P2/PyTorch_4L_80_20.png, id=240, 722.7pt x 433.62pt>
+File: ../Auto_MPG_P2/PyTorch_4L_80_20.png Graphic file (type png)
+<use ../Auto_MPG_P2/PyTorch_4L_80_20.png>
+Package pdftex.def Info: ../Auto_MPG_P2/PyTorch_4L_80_20.png  used on input lin
+e 472.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [12 <../Auto_MPG_P2/PyTorch_4L_In_Sample.png> <../Auto_MPG_P2/PyTorch_4L_80_20
+.png>]
+<fig/a1.png, id=247, 570.933pt x 354.123pt>
+File: fig/a1.png Graphic file (type png)
+<use fig/a1.png>
+Package pdftex.def Info: fig/a1.png  used on input line 531.
+(pdftex.def)             Requested size: 278.69475pt x 172.86795pt.
+<fig/a2.png, id=248, 570.933pt x 354.123pt>
+File: fig/a2.png Graphic file (type png)
+<use fig/a2.png>
+Package pdftex.def Info: fig/a2.png  used on input line 532.
+(pdftex.def)             Requested size: 278.69475pt x 172.86795pt.
+
+Overfull \hbox (24.00002pt too wide) in paragraph at lines 530--536
+ [][] 
+ []
+
+<fig/a3.png, id=249, 570.933pt x 354.123pt>
+File: fig/a3.png Graphic file (type png)
+<use fig/a3.png>
+Package pdftex.def Info: fig/a3.png  used on input line 544.
+(pdftex.def)             Requested size: 278.69475pt x 172.86795pt.
+<fig/a4.png, id=250, 570.933pt x 354.123pt>
+File: fig/a4.png Graphic file (type png)
+<use fig/a4.png>
+Package pdftex.def Info: fig/a4.png  used on input line 545.
+(pdftex.def)             Requested size: 278.69475pt x 172.86795pt.
+
+Overfull \hbox (24.00002pt too wide) in paragraph at lines 543--549
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13 <./fig/a1.png> <./fig/a2.png>] [14 <./fig/a3.png> <./fig/a4.png>]
+<../Housing_P2/Scalation_2L_In_Sample.png, id=274, 1606.0pt x 1405.25pt>
 File: ../Housing_P2/Scalation_2L_In_Sample.png Graphic file (type png)
 <use ../Housing_P2/Scalation_2L_In_Sample.png>
 Package pdftex.def Info: ../Housing_P2/Scalation_2L_In_Sample.png  used on inpu
-t line 261.
+t line 614.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Housing_P2/Scalation_2L_80_20.png, id=134, 1606.0pt x 1405.25pt>
+<../Housing_P2/Scalation_2L_80_20.png, id=275, 1606.0pt x 1405.25pt>
 File: ../Housing_P2/Scalation_2L_80_20.png Graphic file (type png)
 <use ../Housing_P2/Scalation_2L_80_20.png>
 Package pdftex.def Info: ../Housing_P2/Scalation_2L_80_20.png  used on input li
-ne 266.
+ne 619.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Housing_P2/PyTorch_2L_In_Sample.png, id=135, 722.7pt x 433.62pt>
+<../Housing_P2/PyTorch_2L_In_Sample.png, id=276, 722.7pt x 433.62pt>
 File: ../Housing_P2/PyTorch_2L_In_Sample.png Graphic file (type png)
 <use ../Housing_P2/PyTorch_2L_In_Sample.png>
 Package pdftex.def Info: ../Housing_P2/PyTorch_2L_In_Sample.png  used on input 
-line 274.
+line 627.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
-<../Housing_P2/PyTorch_2L_80_20.png, id=136, 722.7pt x 433.62pt>
+<../Housing_P2/PyTorch_2L_80_20.png, id=277, 722.7pt x 433.62pt>
 File: ../Housing_P2/PyTorch_2L_80_20.png Graphic file (type png)
 <use ../Housing_P2/PyTorch_2L_80_20.png>
 Package pdftex.def Info: ../Housing_P2/PyTorch_2L_80_20.png  used on input line
- 279.
+ 632.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
- [5] [6 <../Housing_P2/Scalation_2L_In_Sample.png (PNG copy)> <../Housing_P2/Sc
-alation_2L_80_20.png (PNG copy)> <../Housing_P2/PyTorch_2L_In_Sample.png> <../H
-ousing_P2/PyTorch_2L_80_20.png>]
-<../Housing_P2/Scalation_3L_In_Sample.png, id=153, 1606.0pt x 1405.25pt>
+ [15 <../Housing_P2/Scalation_2L_In_Sample.png (PNG copy)> <../Housing_P2/Scala
+tion_2L_80_20.png (PNG copy)> <../Housing_P2/PyTorch_2L_In_Sample.png> <../Hous
+ing_P2/PyTorch_2L_80_20.png>]
+<../Housing_P2_Feature_Selection/Scalation_2L_rSq_Forward.png, id=284, 1686.3pt
+ x 1475.5125pt>
+File: ../Housing_P2_Feature_Selection/Scalation_2L_rSq_Forward.png Graphic file
+ (type png)
+<use ../Housing_P2_Feature_Selection/Scalation_2L_rSq_Forward.png>
+Package pdftex.def Info: ../Housing_P2_Feature_Selection/Scalation_2L_rSq_Forwa
+rd.png  used on input line 649.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png, id=285, 1686
+.3pt x 1475.5125pt>
+File: ../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png Graphic 
+file (type png)
+<use ../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_F
+orward.png  used on input line 654.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Housing_P2_Feature_Selection/Scalation_2L_rSq_Backward.png, id=286, 1686.3p
+t x 1475.5125pt>
+File: ../Housing_P2_Feature_Selection/Scalation_2L_rSq_Backward.png Graphic fil
+e (type png)
+<use ../Housing_P2_Feature_Selection/Scalation_2L_rSq_Backward.png>
+Package pdftex.def Info: ../Housing_P2_Feature_Selection/Scalation_2L_rSq_Backw
+ard.png  used on input line 682.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png, id=287, 168
+6.3pt x 1475.5125pt>
+File: ../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png Graphic
+ file (type png)
+<use ../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png>
+Package pdftex.def Info: ../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_B
+ackward.png  used on input line 687.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Housing_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png, id=288, 1686.3p
+t x 1475.5125pt>
+File: ../Housing_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png Graphic fil
+e (type png)
+<use ../Housing_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png>
+Package pdftex.def Info: ../Housing_P2_Feature_Selection/Scalation_2L_rSq_Stepw
+ise.png  used on input line 715.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png, id=289, 168
+6.3pt x 1475.5125pt>
+File: ../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png Graphic
+ file (type png)
+<use ../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png>
+Package pdftex.def Info: ../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_S
+tepwise.png  used on input line 720.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+ [16 <../Housing_P2_Feature_Selection/Scalation_2L_rSq_Forward.png (PNG copy)> 
+<../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png (PNG copy)> <
+../Housing_P2_Feature_Selection/Scalation_2L_rSq_Backward.png (PNG copy)> <../H
+ousing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png (PNG copy)>] [17 
+<../Housing_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png (PNG copy)> <../
+Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png (PNG copy)>]
+<../Housing_P2/Scalation_3L_In_Sample.png, id=307, 1606.0pt x 1405.25pt>
 File: ../Housing_P2/Scalation_3L_In_Sample.png Graphic file (type png)
 <use ../Housing_P2/Scalation_3L_In_Sample.png>
 Package pdftex.def Info: ../Housing_P2/Scalation_3L_In_Sample.png  used on inpu
-t line 344.
+t line 798.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Housing_P2/Scalation_3L_80_20.png, id=154, 1606.0pt x 1405.25pt>
+<../Housing_P2/Scalation_3L_80_20.png, id=308, 1606.0pt x 1405.25pt>
 File: ../Housing_P2/Scalation_3L_80_20.png Graphic file (type png)
 <use ../Housing_P2/Scalation_3L_80_20.png>
 Package pdftex.def Info: ../Housing_P2/Scalation_3L_80_20.png  used on input li
-ne 349.
+ne 803.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Housing_P2/PyTorch_3L_In_Sample.png, id=155, 722.7pt x 433.62pt>
+<../Housing_P2/PyTorch_3L_In_Sample.png, id=309, 722.7pt x 433.62pt>
 File: ../Housing_P2/PyTorch_3L_In_Sample.png Graphic file (type png)
 <use ../Housing_P2/PyTorch_3L_In_Sample.png>
 Package pdftex.def Info: ../Housing_P2/PyTorch_3L_In_Sample.png  used on input 
-line 357.
+line 811.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
-<../Housing_P2/PyTorch_3L_80_20.png, id=156, 722.7pt x 433.62pt>
+<../Housing_P2/PyTorch_3L_80_20.png, id=310, 722.7pt x 433.62pt>
 File: ../Housing_P2/PyTorch_3L_80_20.png Graphic file (type png)
 <use ../Housing_P2/PyTorch_3L_80_20.png>
 Package pdftex.def Info: ../Housing_P2/PyTorch_3L_80_20.png  used on input line
- 362.
+ 816.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
- [7] [8 <../Housing_P2/Scalation_3L_In_Sample.png (PNG copy)> <../Housing_P2/Sc
-alation_3L_80_20.png (PNG copy)> <../Housing_P2/PyTorch_3L_In_Sample.png> <../H
-ousing_P2/PyTorch_3L_80_20.png>]
-<../Insurance_P2/Scalation_2L_In_Sample.png, id=175, 1606.0pt x 1405.25pt>
+ [18 <../Housing_P2/Scalation_3L_In_Sample.png (PNG copy)> <../Housing_P2/Scala
+tion_3L_80_20.png (PNG copy)> <../Housing_P2/PyTorch_3L_In_Sample.png> <../Hous
+ing_P2/PyTorch_3L_80_20.png>]
+<../Housing_P2_Feature_Selection/Scalation_3L_rSq_Forward.png, id=317, 1686.3pt
+ x 1475.5125pt>
+File: ../Housing_P2_Feature_Selection/Scalation_3L_rSq_Forward.png Graphic file
+ (type png)
+<use ../Housing_P2_Feature_Selection/Scalation_3L_rSq_Forward.png>
+Package pdftex.def Info: ../Housing_P2_Feature_Selection/Scalation_3L_rSq_Forwa
+rd.png  used on input line 835.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png, id=318, 1686
+.3pt x 1475.5125pt>
+File: ../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png Graphic 
+file (type png)
+<use ../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_F
+orward.png  used on input line 840.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Housing_P2_Feature_Selection/Scalation_3L_rSq_Backward.png, id=319, 1686.3p
+t x 1475.5125pt>
+File: ../Housing_P2_Feature_Selection/Scalation_3L_rSq_Backward.png Graphic fil
+e (type png)
+<use ../Housing_P2_Feature_Selection/Scalation_3L_rSq_Backward.png>
+Package pdftex.def Info: ../Housing_P2_Feature_Selection/Scalation_3L_rSq_Backw
+ard.png  used on input line 868.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png, id=320, 168
+6.3pt x 1475.5125pt>
+File: ../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png Graphic
+ file (type png)
+<use ../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png>
+Package pdftex.def Info: ../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_B
+ackward.png  used on input line 873.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+ [19 <../Housing_P2_Feature_Selection/Scalation_3L_rSq_Forward.png (PNG copy)> 
+<../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png (PNG copy)> <
+../Housing_P2_Feature_Selection/Scalation_3L_rSq_Backward.png (PNG copy)> <../H
+ousing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png (PNG copy)>]
+<../Housing_P2/PyTorch_4L_In_Sample.png, id=332, 722.7pt x 433.62pt>
+File: ../Housing_P2/PyTorch_4L_In_Sample.png Graphic file (type png)
+<use ../Housing_P2/PyTorch_4L_In_Sample.png>
+Package pdftex.def Info: ../Housing_P2/PyTorch_4L_In_Sample.png  used on input 
+line 960.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+<../Housing_P2/PyTorch_4L_80_20.png, id=333, 722.7pt x 433.62pt>
+File: ../Housing_P2/PyTorch_4L_80_20.png Graphic file (type png)
+<use ../Housing_P2/PyTorch_4L_80_20.png>
+Package pdftex.def Info: ../Housing_P2/PyTorch_4L_80_20.png  used on input line
+ 965.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [20 <../Housing_P2/PyTorch_4L_In_Sample.png> <../Housing_P2/PyTorch_4L_80_20.p
+ng>] [21]
+<fig/ch1.png, id=346, 570.933pt x 354.123pt>
+File: fig/ch1.png Graphic file (type png)
+<use fig/ch1.png>
+Package pdftex.def Info: fig/ch1.png  used on input line 1023.
+(pdftex.def)             Requested size: 278.69475pt x 172.86795pt.
+<fig/ch2.png, id=347, 570.933pt x 354.123pt>
+File: fig/ch2.png Graphic file (type png)
+<use fig/ch2.png>
+Package pdftex.def Info: fig/ch2.png  used on input line 1024.
+(pdftex.def)             Requested size: 278.69475pt x 172.86795pt.
+
+Overfull \hbox (24.00002pt too wide) in paragraph at lines 1022--1028
+ [][] 
+ []
+
+<fig/ch3.png, id=348, 570.933pt x 354.123pt>
+File: fig/ch3.png Graphic file (type png)
+<use fig/ch3.png>
+Package pdftex.def Info: fig/ch3.png  used on input line 1036.
+(pdftex.def)             Requested size: 278.69475pt x 172.86795pt.
+<fig/ch4.png, id=349, 570.933pt x 354.123pt>
+File: fig/ch4.png Graphic file (type png)
+<use fig/ch4.png>
+Package pdftex.def Info: fig/ch4.png  used on input line 1037.
+(pdftex.def)             Requested size: 278.69475pt x 172.86795pt.
+
+Overfull \hbox (24.00002pt too wide) in paragraph at lines 1035--1041
+ [][] 
+ []
+
+[22 <./fig/ch1.png> <./fig/ch2.png> <./fig/ch3.png> <./fig/ch4.png>]
+<../Insurance_P2/Scalation_2L_In_Sample.png, id=367, 1606.0pt x 1405.25pt>
 File: ../Insurance_P2/Scalation_2L_In_Sample.png Graphic file (type png)
 <use ../Insurance_P2/Scalation_2L_In_Sample.png>
 Package pdftex.def Info: ../Insurance_P2/Scalation_2L_In_Sample.png  used on in
-put line 431.
+put line 1106.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Insurance_P2/Scalation_2L_80_20.png, id=176, 1606.0pt x 1405.25pt>
+<../Insurance_P2/Scalation_2L_80_20.png, id=368, 1606.0pt x 1405.25pt>
 File: ../Insurance_P2/Scalation_2L_80_20.png Graphic file (type png)
 <use ../Insurance_P2/Scalation_2L_80_20.png>
 Package pdftex.def Info: ../Insurance_P2/Scalation_2L_80_20.png  used on input 
-line 436.
+line 1111.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Insurance_P2/PyTorch_2L_In_Sample.png, id=177, 722.7pt x 433.62pt>
+<../Insurance_P2/PyTorch_2L_In_Sample.png, id=369, 722.7pt x 433.62pt>
 File: ../Insurance_P2/PyTorch_2L_In_Sample.png Graphic file (type png)
 <use ../Insurance_P2/PyTorch_2L_In_Sample.png>
 Package pdftex.def Info: ../Insurance_P2/PyTorch_2L_In_Sample.png  used on inpu
-t line 444.
+t line 1119.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
-<../Insurance_P2/PyTorch_2L_80_20.png, id=178, 722.7pt x 433.62pt>
+<../Insurance_P2/PyTorch_2L_80_20.png, id=370, 722.7pt x 433.62pt>
 File: ../Insurance_P2/PyTorch_2L_80_20.png Graphic file (type png)
 <use ../Insurance_P2/PyTorch_2L_80_20.png>
 Package pdftex.def Info: ../Insurance_P2/PyTorch_2L_80_20.png  used on input li
-ne 449.
+ne 1124.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [23]
+<../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Forward.png, id=375, 1686.3
+pt x 1475.5125pt>
+File: ../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Forward.png Graphic fi
+le (type png)
+<use ../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Forward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/Scalation_2L_rSq_For
+ward.png  used on input line 1143.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png, id=376, 16
+86.3pt x 1475.5125pt>
+File: ../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png Graphi
+c file (type png)
+<use ../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC
+_Forward.png  used on input line 1148.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png, id=377, 722.7pt 
+x 433.62pt>
+File: ../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png Graphic file
+ (type png)
+<use ../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Forwa
+rd.png  used on input line 1156.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+<../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png, id=378, 722.
+7pt x 433.62pt>
+File: ../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png Graphic 
+file (type png)
+<use ../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_F
+orward.png  used on input line 1161.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
 
-[9] [10 <../Insurance_P2/Scalation_2L_In_Sample.png (PNG copy)> <../Insurance_P
-2/Scalation_2L_80_20.png (PNG copy)> <../Insurance_P2/PyTorch_2L_In_Sample.png>
- <../Insurance_P2/PyTorch_2L_80_20.png>]
-<../Insurance_P2/Scalation_3L_In_Sample.png, id=195, 1606.0pt x 1405.25pt>
+[24 <../Insurance_P2/Scalation_2L_In_Sample.png (PNG copy)> <../Insurance_P2/Sc
+alation_2L_80_20.png (PNG copy)> <../Insurance_P2/PyTorch_2L_In_Sample.png> <..
+/Insurance_P2/PyTorch_2L_80_20.png>]
+<../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Backward.png, id=385, 1686.
+3pt x 1475.5125pt>
+File: ../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Backward.png Graphic f
+ile (type png)
+<use ../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Backward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Bac
+kward.png  used on input line 1178.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png, id=386, 1
+686.3pt x 1475.5125pt>
+File: ../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png Graph
+ic file (type png)
+<use ../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC
+_Backward.png  used on input line 1183.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Backward.png, id=387, 722.7pt
+ x 433.62pt>
+File: ../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Backward.png Graphic fil
+e (type png)
+<use ../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Backward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Backw
+ard.png  used on input line 1191.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+<../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Backward.png, id=388, 722
+.7pt x 433.62pt>
+File: ../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Backward.png Graphic
+ file (type png)
+<use ../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Backward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_B
+ackward.png  used on input line 1196.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [25 <../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Forward.png (PNG copy)
+> <../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png (PNG copy
+)> <../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png> <../Insurance
+_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png>]
+<../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png, id=397, 1686.
+3pt x 1475.5125pt>
+File: ../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png Graphic f
+ile (type png)
+<use ../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Ste
+pwise.png  used on input line 1213.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png, id=398, 1
+686.3pt x 1475.5125pt>
+File: ../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png Graph
+ic file (type png)
+<use ../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC
+_Stepwise.png  used on input line 1218.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Stepwise.png, id=399, 722.7pt
+ x 433.62pt>
+File: ../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Stepwise.png Graphic fil
+e (type png)
+<use ../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Stepwise.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Stepw
+ise.png  used on input line 1226.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+<../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Stepwise.png, id=400, 722
+.7pt x 433.62pt>
+File: ../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Stepwise.png Graphic
+ file (type png)
+<use ../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Stepwise.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_S
+tepwise.png  used on input line 1231.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [26 <../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Backward.png (PNG copy
+)> <../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png (PNG co
+py)> <../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Backward.png> <../Insura
+nce_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Backward.png>] [27 <../Insurance_P2
+_Feature_Selection/Scalation_2L_rSq_Stepwise.png (PNG copy)> <../Insurance_P2_F
+eature_Selection/Scalation_2L_AIC_BIC_Stepwise.png (PNG copy)> <../Insurance_P2
+_Feature_Selection/PyTorch_2L_rSq_Stepwise.png> <../Insurance_P2_Feature_Select
+ion/PyTorch_2L_AIC_BIC_Stepwise.png>]
+<../Insurance_P2/Scalation_3L_In_Sample.png, id=421, 1606.0pt x 1405.25pt>
 File: ../Insurance_P2/Scalation_3L_In_Sample.png Graphic file (type png)
 <use ../Insurance_P2/Scalation_3L_In_Sample.png>
 Package pdftex.def Info: ../Insurance_P2/Scalation_3L_In_Sample.png  used on in
-put line 514.
+put line 1296.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Insurance_P2/Scalation_3L_80_20.png, id=196, 1606.0pt x 1405.25pt>
+<../Insurance_P2/Scalation_3L_80_20.png, id=422, 1606.0pt x 1405.25pt>
 File: ../Insurance_P2/Scalation_3L_80_20.png Graphic file (type png)
 <use ../Insurance_P2/Scalation_3L_80_20.png>
 Package pdftex.def Info: ../Insurance_P2/Scalation_3L_80_20.png  used on input 
-line 519.
+line 1301.
 (pdftex.def)             Requested size: 222.9524pt x 195.0826pt.
-<../Insurance_P2/PyTorch_3L_In_Sample.png, id=197, 722.7pt x 433.62pt>
+<../Insurance_P2/PyTorch_3L_In_Sample.png, id=423, 722.7pt x 433.62pt>
 File: ../Insurance_P2/PyTorch_3L_In_Sample.png Graphic file (type png)
 <use ../Insurance_P2/PyTorch_3L_In_Sample.png>
 Package pdftex.def Info: ../Insurance_P2/PyTorch_3L_In_Sample.png  used on inpu
-t line 527.
+t line 1309.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
-<../Insurance_P2/PyTorch_3L_80_20.png, id=198, 722.7pt x 433.62pt>
+<../Insurance_P2/PyTorch_3L_80_20.png, id=424, 722.7pt x 433.62pt>
 File: ../Insurance_P2/PyTorch_3L_80_20.png Graphic file (type png)
 <use ../Insurance_P2/PyTorch_3L_80_20.png>
 Package pdftex.def Info: ../Insurance_P2/PyTorch_3L_80_20.png  used on input li
-ne 532.
+ne 1314.
 (pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
- [11] [12 <../Insurance_P2/Scalation_3L_In_Sample.png (PNG copy)> <../Insurance
-_P2/Scalation_3L_80_20.png (PNG copy)> <../Insurance_P2/PyTorch_3L_In_Sample.pn
-g> <../Insurance_P2/PyTorch_3L_80_20.png>] [13] [14] [15] [16] [17] [18] (./Rep
-ort.aux)
+ [28]
+<../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Forward.png, id=429, 1686.3
+pt x 1475.5125pt>
+File: ../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Forward.png Graphic fi
+le (type png)
+<use ../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Forward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/Scalation_3L_rSq_For
+ward.png  used on input line 1335.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png, id=430, 16
+86.3pt x 1475.5125pt>
+File: ../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png Graphi
+c file (type png)
+<use ../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC
+_Forward.png  used on input line 1340.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+ [29 <../Insurance_P2/Scalation_3L_In_Sample.png (PNG copy)> <../Insurance_P2/S
+calation_3L_80_20.png (PNG copy)> <../Insurance_P2/PyTorch_3L_In_Sample.png> <.
+./Insurance_P2/PyTorch_3L_80_20.png>]
+<../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Backward.png, id=437, 1686.
+3pt x 1475.5125pt>
+File: ../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Backward.png Graphic f
+ile (type png)
+<use ../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Backward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Bac
+kward.png  used on input line 1370.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+<../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png, id=438, 1
+686.3pt x 1475.5125pt>
+File: ../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png Graph
+ic file (type png)
+<use ../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png>
+Package pdftex.def Info: ../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC
+_Backward.png  used on input line 1375.
+(pdftex.def)             Requested size: 222.9524pt x 195.06544pt.
+ [30 <../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Forward.png (PNG copy)
+> <../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png (PNG copy
+)> <../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Backward.png (PNG copy)>
+ <../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png (PNG copy
+)>]
+<../Insurance_P2/PyTorch_4L_In_Sample.png, id=449, 722.7pt x 433.62pt>
+File: ../Insurance_P2/PyTorch_4L_In_Sample.png Graphic file (type png)
+<use ../Insurance_P2/PyTorch_4L_In_Sample.png>
+Package pdftex.def Info: ../Insurance_P2/PyTorch_4L_In_Sample.png  used on inpu
+t line 1463.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+<../Insurance_P2/PyTorch_4L_80_20.png, id=450, 722.7pt x 433.62pt>
+File: ../Insurance_P2/PyTorch_4L_80_20.png Graphic file (type png)
+<use ../Insurance_P2/PyTorch_4L_80_20.png>
+Package pdftex.def Info: ../Insurance_P2/PyTorch_4L_80_20.png  used on input li
+ne 1468.
+(pdftex.def)             Requested size: 273.12392pt x 163.87085pt.
+ [31 <../Insurance_P2/PyTorch_4L_In_Sample.png> <../Insurance_P2/PyTorch_4L_80_
+20.png>] [32]
+<fig/ins1.png, id=464, 570.2103pt x 354.123pt>
+File: fig/ins1.png Graphic file (type png)
+<use fig/ins1.png>
+Package pdftex.def Info: fig/ins1.png  used on input line 1528.
+(pdftex.def)             Requested size: 278.69475pt x 173.08409pt.
+<fig/ins2.png, id=465, 570.933pt x 354.123pt>
+File: fig/ins2.png Graphic file (type png)
+<use fig/ins2.png>
+Package pdftex.def Info: fig/ins2.png  used on input line 1529.
+(pdftex.def)             Requested size: 278.69475pt x 172.86795pt.
+
+Overfull \hbox (24.00002pt too wide) in paragraph at lines 1527--1533
+ [][] 
+ []
+
+<fig/ins3.png, id=466, 570.2103pt x 354.123pt>
+File: fig/ins3.png Graphic file (type png)
+<use fig/ins3.png>
+Package pdftex.def Info: fig/ins3.png  used on input line 1541.
+(pdftex.def)             Requested size: 278.69475pt x 173.08409pt.
+<fig/ins4.png, id=467, 576.7146pt x 354.123pt>
+File: fig/ins4.png Graphic file (type png)
+<use fig/ins4.png>
+Package pdftex.def Info: fig/ins4.png  used on input line 1542.
+(pdftex.def)             Requested size: 278.69475pt x 171.13344pt.
+
+Overfull \hbox (24.00002pt too wide) in paragraph at lines 1540--1546
+ [][] 
+ []
+
+[33 <./fig/ins1.png> <./fig/ins2.png> <./fig/ins3.png> <./fig/ins4.png>]
+[34] [35] [36] [37] [38] [39] (./Report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: 0F4B4EECADB79C566C4067617CF56061;2577.
+(rerunfilecheck)             Checksum: 1D4C11532C2A8116A16D5515301127F9;4192.
  ) 
 Here is how much of TeX's memory you used:
- 13110 strings out of 474116
- 227183 string characters out of 5743682
+ 13671 strings out of 474116
+ 255992 string characters out of 5743682
  1952187 words of memory out of 5000000
- 35281 multiletter control sequences out of 15000+600000
+ 35774 multiletter control sequences out of 15000+600000
  563955 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,848b,454s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,848b,454s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
 sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 /local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Report.pdf (18 pages, 1915618 bytes).
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on Report.pdf (39 pages, 4743020 bytes).
 PDF statistics:
- 303 PDF objects out of 1000 (max. 8388607)
- 226 compressed objects within 3 object streams
- 66 named destinations out of 1000 (max. 500000)
- 257 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 593 PDF objects out of 1000 (max. 8388607)
+ 401 compressed objects within 5 object streams
+ 134 named destinations out of 1000 (max. 500000)
+ 658 words of extra memory for PDF output out of 10000 (max. 10000000)
 

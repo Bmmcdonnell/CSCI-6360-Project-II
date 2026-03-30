@@ -90,7 +90,7 @@ def save_rsq_plot(key, x, r_sq, adj_r_sq, smape, r_sq_cv, method, data_name, fol
     
     # Save the figure to the designated folder and clear the plot from memory
     # Note: Kept 'rSq' in the filename here to maintain compatibility if other scripts expect that specific file format
-    plt.savefig(f'{folder_name}/Statsmodels_{model_name_s}_rSq_{key}.png')
+    plt.savefig(f'{folder_name}/PyTorch_{model_name_s}_rSq_{key}.png')
     plt.close('all')
 
 
@@ -121,5 +121,5 @@ def save_aic_bic_plot(key, x, aic, bic, method, data_name, folder_name, model_na
     plt.legend()
     
     # Save the figure to the designated folder and clear the plot from memory
-    plt.savefig(f'{folder_name}/Statsmodels_{model_name_s}_AIC_BIC_{key}.png')
+    plt.savefig(f'{folder_name}/PyTorch_{model_name_s}_AIC_BIC_{key}.png')
     plt.close('all')

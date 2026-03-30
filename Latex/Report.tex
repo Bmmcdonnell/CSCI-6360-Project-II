@@ -20,13 +20,32 @@
 
 \section{Introduction}
 
-In this project, we will explore three different datasets using Neural Networks (2, 3, and 4 layers). The three datasets we will be using are:
+In this project, we will explore three different datasets using Neural Networks (2, 3, and 4 layers; and CNN). The three datasets we will be using are:
 
 \begin{itemize}
 	\item \textbf{Auto MPG:} This dataset contains information about different cars. The goal is to predict the miles per gallon (MPG) given the other characteristics of the car. The dataset can be found at \url{https://archive.ics.uci.edu/dataset}.
 	\item \textbf{California Housing Prices:} This dataset contains information about different housing locations. The goal is to predict the median house price of the area given the other characteristics. The dataset can be found at \url{https://www.kaggle.com/datasets/camnugent/california-housing-prices}.
 	\item \textbf{Insurance Charges:} This dataset contains information about different primary beneficiaries of health insurance. The goal is to predict the primary beneficiaries insurance charges given their other characteristics. The dataset can be found at \url{https://www.kaggle.com/datasets/mirichoi0218/insurance}.
 \end{itemize}
+
+\subsection{CNN Implementation}
+
+\subsubsection{Architecture}
+We utilize a simple CNN architecture consisting of two convolution layers, each followed by an activation function. The output of the final convolution layer is fed into a fully connected layer, which returns the predicted value. The PyTorch implementation of the model is given below.
+
+\begin{figure}[H]
+     \centering
+     \includegraphics[width=0.55\textwidth]{fig/CNN.png}
+     %\caption{}
+     \label{fig:CNN}
+\end{figure}
+
+\subsubsection{Hyper-parameter Tuning}
+To optimize performance, we tuned the model by varying the number of filters, activation functions, learning rates, and mini-batch sizes. Specifically, we evaluated different numbers of filters for Layer 1 and Layer 2: (4, 8), (8, 16), (16, 32), (8, 8), and (16, 16). \\
+\\
+For activation functions, we evaluated ReLU, Tanh, and their combinations in the CNN layers. We also tested various learning rates to identify which produced the lowest validation Mean Squared Error.\\ 
+\\
+Finally, we evaluated mini-batch sizes of 2, 4, 8, 16, and 32 to determine the optimum number of samples for gradient approximation. These parameters were individually optimized for each dataset. The Adam optimizer was used in all cases.
 
 \section{Auto MPG}
 
@@ -113,6 +132,115 @@ bic & 978.5459 & 216.8881 \\ \hline
      \label{fig:Auto MPG 2L Plots}
 \end{figure}
 
+\subsubsection{Feature Selection}
+
+Scalation Forward Selection Order: displacement, modelyear, weight, origin 2, origin 3, cylinders, horsepower, acceleration
+
+PyTorch Forward Selection Order: Null, weight, model year, origin 3, origin 2, displacement, acceleration, cylinders, horsepower
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png}
+     \end{subfigure}
+
+     \vspace{10pt} % Add some vertical spacing between rows
+
+     % Second Row
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png}
+     \end{subfigure}
+     
+     \caption{Auto MPG 2 Layer Neural Network Forward Selection Quality of Fit Metrics\\ Top Left: Scalation $R^2$, Top Right: Scalation AIC/BIC\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Auto MPG 2 Layer Neural Network Forward Selection Quality of Fit Metrics}
+\end{figure}
+
+We note that for backward elimination using scalation, only 2 variables were returned. We believe these are the remaining variables after the least useful variables were removed one by one.
+
+Scalation Backward Elimination Reversed Order: displacement, modelyear
+
+PyTorch Backward Elimination Reversed Order: Null, weight, model year, origin 3, origin 2, horsepower, displacement, cylinders, acceleration
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Backward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png}
+     \end{subfigure}
+
+     \vspace{10pt} % Add some vertical spacing between rows
+
+     % Second Row
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+	\centering
+        \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png}
+     \end{subfigure}
+     
+     \caption{Auto MPG 2 Layer Neural Network Backward Elimination Quality of Fit Metrics\\  Top Left: Scalation $R^2$, Top Right: Scalation AIC/BIC\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Auto MPG 2 Layer Neural Network Backward Elimination Quality of Fit Metrics}
+\end{figure}
+
+Scalation Stepwise Selection Order: displacement, modelyear, weight, origin 3, origin 2
+
+PyTorch Stepwise Selection Order: Null, weight, model year, origin 3, origin 2, displacement, horsepower, cylinders
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png}
+     \end{subfigure}
+
+     \vspace{10pt} % Add some vertical spacing between rows
+
+     % Second Row
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png}
+     \end{subfigure}
+     
+     \caption{Auto MPG 2 Layer Neural Network Stepwise Selection Quality of Fit Metrics\\  Top Left: Scalation $R^2$, Top Right: Scalation AIC/BIC\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Auto MPG 2 Layer Neural Network Stepwise Selection Quality of Fit Metrics}
+\end{figure}
+
 \subsection{3 Layer Neural Network}
 
 In Scalation, the best results were found when using sigmoid as the activation function for the hidden layer, reLU as the activation function for the output layer, $3\times x.dim2=24$ nodes in the hidden layer, a learning rate of $0.01$, and a batch size of $8$. The results are shown in \Cref{tab:Scalation - Auto MPG 3L NN}. In PyTorch, the best results were found when using LeakyReLU as the activation function for the hidden layer, identity as the activation function for the output layer, $100$ nodes in the hidden layer, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - Auto MPG 3L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:Auto MPG 3L Plots}.
@@ -196,7 +324,232 @@ bic & 808.0044 & 171.4340 \\ \hline
      \label{fig:Auto MPG 3L Plots}
 \end{figure}
 
+\subsubsection{Feature Selection}
+
+Scalation Forward Selection Order: displacement, modelyear, weight, acceleration, origin 2, origin 3, cylinders, horsepower
+
+PyTorch Forward Selection Order: Null, weight, model year, acceleration, origin 2, displacement, cylinders, horsepower, origin 3
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png}
+     \end{subfigure}
+
+     \vspace{10pt} % Add some vertical spacing between rows
+
+     % Second Row
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png}
+     \end{subfigure}
+     
+     \caption{Auto MPG 3 Layer Neural Network Forward Selection Quality of Fit Metrics\\  Top Left: Scalation $R^2$, Top Right: Scalation AIC/BIC\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Auto MPG 3 Layer Neural Network Forward Selection Quality of Fit Metrics}
+\end{figure}
+
+Scalation Backward Elimination Reversed Order: displacement, modelyear
+
+PyTorch Backward Elimination Reversed Order: Null, displacement, model year, acceleration, origin 2, horsepower, origin 3, weight, cylinders
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Backward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png}
+     \end{subfigure}
+
+     \vspace{10pt} % Add some vertical spacing between rows
+
+     % Second Row
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png}
+     \end{subfigure}
+     
+     \caption{Auto MPG 3 Layer Neural Network Backward Elimination Quality of Fit Metrics\\  Top Left: Scalation $R^2$, Top Right: Scalation AIC/BIC\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Auto MPG 3 Layer Neural Network Backward Elimination Quality of Fit Metrics}
+\end{figure}
+
+Scalation Stepwise Selection Order: displacement, modelyear, weight, acceleration, origin 2, origin 3, cylinders
+
+PyTorch Stepwise Selection Order: Null, horsepower, model year, weight
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_3L_rSq_Stepwise.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/Scalation_3L_AIC_BIC_Stepwise.png}
+     \end{subfigure}
+
+     \vspace{10pt} % Add some vertical spacing between rows
+
+     % Second Row
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png}
+     \end{subfigure}
+     
+     \caption{Auto MPG 3 Layer Neural Network Stepwise Selection Quality of Fit Metrics\\  Top Left: Scalation $R^2$, Top Right: Scalation AIC/BIC\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Auto MPG 3 Layer Neural Network Stepwise Selection Quality of Fit Metrics}
+\end{figure}
+
 \subsection{4 Layer Neural Network}
+
+In PyTorch, the best results were found when using LeakyReLU as the activation function for both the hidden layers, identity as the activation function for the output layer, $100$ nodes in both the hidden layers, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - Auto MPG 4L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:Auto MPG 4L Plots}.
+
+\begin{table}[H]
+\centering
+\caption{PyTorch - Auto MPG 4L NN}
+\label{tab:PyTorch - Auto MPG 4L NN}
+\begin{tabular}{|c|c|c|}\hline
+Metric & In-Sample & 80-20 Split \\ \hline \hline
+rSq & 0.9368 & 0.9057 \\ \hline
+rSqBar & 0.9356 & 0.8964 \\ \hline
+sst & 23818.9935 & 4910.2699 \\ \hline
+sse & 1506.1940 & 462.8453 \\ \hline
+sde & 1.9805 & 2.5532 \\ \hline
+mse0 & 3.8423 & 5.8588 \\ \hline
+rmse & 1.9602 & 2.4205 \\ \hline
+mae & 1.3969 & 1.6990 \\ \hline
+smape & 5.9485 & 7.2746 \\ \hline
+m & 392.0000 & 79.0000 \\ \hline
+dfr & 8.0000 & 8.0000 \\ \hline
+df & 384.0000 & 71.0000 \\ \hline
+fStat & 711.0733 & 85.2788 \\ \hline
+aic & 543.6631 & 155.6677 \\ \hline
+bic & 575.4332 & 174.6232 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2/PyTorch_4L_In_Sample.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Auto_MPG_P2/PyTorch_4L_80_20.png}
+     \end{subfigure}
+     
+     \caption{Auto MPG 4 Layer Neural Network Plots\\ Left: PyTorch In-Sample, Right: PyTorch Out-of-Sample\\ black: actual y-values, red: predicted y-values}
+     \label{fig:Auto MPG 4L Plots}
+\end{figure}
+
+\subsection{CNN}
+
+First, the performance of the CNN model for in-sample and validation (80–20 split) was tested using the default parameters with 8 filters in Layer 1 and 16 filters in Layer 2, with ReLU activation in both the CNN and fully connected layers and a learning rate of 0.01. The following table shows the quality of fit of the model.
+
+\begin{table}[H]
+\centering
+\caption{Auto MPG Dataset: CNN regression performance without fine-tuning.}
+\label{tab:Auto_MPG_(In-Sample)}
+\begin{tabular}{lrr}
+\toprule
+ & In-Sample & 80-20 Split \\
+\midrule
+rSq & 0.882 & 0.880 \\
+sst & 23818.994 & 4032.206 \\
+sse & 2801.128 & 483.859 \\
+mse & 7.146 & 6.125 \\
+rmse & 2.673 & 2.475 \\
+mae & 1.941 & 1.811 \\
+m & 392.000 & 79.000 \\
+aic & 5588.874 & 4961.175 \\
+bic & 15155.644 & 10669.175 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Then, hyperparameter optimization resulted in 8 filters in Layer 1 and 16 filters in Layer 2, with Tanh activation in the CNN layers. The optimal learning rate was 0.02 with a batch size of 2. The following table shows the quality of fit of the tuned model.
+
+\begin{table}[H]
+\centering
+\caption{Auto MPG dataset: regression performance of the tuned CNN model.}
+\label{tab:Auto_MPG_(In-Sample)}
+\begin{tabular}{lrr}
+\toprule
+ & In-Sample & 80-20 Split \\
+\midrule
+rSq & 0.892 & 0.859 \\
+sst & 23818.994 & 4032.206 \\
+sse & 2567.609 & 568.952 \\
+mse & 6.550 & 7.202 \\
+rmse & 2.559 & 2.684 \\
+mae & 1.847 & 2.046 \\
+m & 392.000 & 79.000 \\
+aic & 5554.752 & 4973.974 \\
+bic & 15121.522 & 10681.973 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{cc}
+    \includegraphics[width=0.5\textwidth]{fig/a1.png} &
+    \includegraphics[width=0.5\textwidth]{fig/a2.png} \\
+    
+    (a) In-sample & (b) Validation (80-20 split)
+\end{tabular}
+\caption{Performance of the CNN regression on the Auto MPG dataset without fine-tuning.}
+\label{fig:cnn1}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+
+\begin{tabular}{cc}
+    \includegraphics[width=0.5\textwidth]{fig/a3.png} &
+    \includegraphics[width=0.5\textwidth]{fig/a4.png} \\
+    
+    (a) In-sample & (b) Validation (80-20 split)
+\end{tabular}
+
+\caption{Performance of the CNN regression model on the Auto MPG dataset with fine-tuning.}
+\label{fig:cnn1}
+\end{figure}
 
 \section{California House Prices}
 
@@ -283,6 +636,107 @@ bic & 455208.1743 & 91090.2031 \\ \hline
      \label{fig:California House Prices 2L Plots}
 \end{figure}
 
+\subsubsection{Feature Selection}
+
+Scalation Forward Selection Order: longitude, total rooms, median income, ocean proximity INLAND, housing median age, total bedrooms, population, households, latitude, ocean proximity NEAR BAY, ocean proximity ISLAND, ocean proximity NEAR OCEAN
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_2L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png}
+     \end{subfigure}
+
+%     \vspace{10pt} % Add some vertical spacing between rows
+%
+%     % Second Row
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png}
+%     \end{subfigure}
+     
+     \caption{California House Prices 2 Layer Neural Network Forward Selection Quality of Fit Metrics\\ Left: Scalation $R^2$, Right: Scalation AIC/BIC}%\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:California House Prices 2 Layer Neural Network Forward Selection Quality of Fit Metrics}
+\end{figure}
+
+Scalation Backward Elimination Reversed Order: longitude, households
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_2L_rSq_Backward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png}
+     \end{subfigure}
+
+%     \vspace{10pt} % Add some vertical spacing between rows
+%
+%     % Second Row
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_2L_rSq_Backward.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Backward.png}
+%     \end{subfigure}
+     
+     \caption{California House Prices 2 Layer Neural Network Backward Elimination Quality of Fit Metrics\\ Left: Scalation $R^2$, Right: Scalation AIC/BIC}%\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:California House Prices 2 Layer Neural Network Backward Elimination Quality of Fit Metrics}
+\end{figure}
+
+Scalation Stepwise Selection Order: longitude, median income, ocean proximity INLAND, housing median age, total bedrooms, population, households, latitude, ocean proximity ISLAND
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png}
+     \end{subfigure}
+
+%     \vspace{10pt} % Add some vertical spacing between rows
+%
+%     % Second Row
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_2L_rSq_Stepwise.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Stepwise.png}
+%     \end{subfigure}
+     
+     \caption{California House Prices 2 Layer Neural Network Stepwise Selection Quality of Fit Metrics\\ Left: Scalation $R^2$, Right: Scalation AIC/BIC}%\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:California House Prices 2 Layer Neural Network Stepwise Selection Quality of Fit Metrics}
+\end{figure}
+
 \subsection{3 Layer Neural Network}
 
 In Scalation, the best results were found when using lreLU as the activation function for the hidden layer, identity as the activation function for the output layer, $3\times x.dim2=36$ nodes in the hidden layer, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:Scalation - California House Prices 3L NN}. In PyTorch, the best results were found when using LeakyReLU as the activation function for the hidden layer, identity as the activation function for the output layer, $100$ nodes in the hidden layer, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - California House Prices 3L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:California House Prices 3L Plots}.
@@ -366,7 +820,228 @@ bic & 442995.0819 & 88899.9595 \\ \hline
      \label{fig:California House Prices 3L Plots}
 \end{figure}
 
+\subsubsection{Feature Selection}
+
+When performing feature selection in Scalation, it appears that there was an error as the plots reveal that all the values were NaN. Further analysis would need to be done to understand what went wrong.
+
+Scalation Forward Selection Order: longitude, latitude, housing median age, total rooms, total bedrooms, population, households, median income, ocean proximity INLAND, ocean proximity ISLAND, ocean proximity NEAR BAY, ocean proximity NEAR OCEAN
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_3L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png}
+     \end{subfigure}
+
+%     \vspace{10pt} % Add some vertical spacing between rows
+%
+%     % Second Row
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png}
+%     \end{subfigure}
+     
+     \caption{California House Prices 3Layer Neural Network Forward Selection Quality of Fit Metrics\\ Left: Scalation $R^2$, Right: Scalation AIC/BIC}%\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:California House Prices 3 Layer Neural Network Forward Selection Quality of Fit Metrics}
+\end{figure}
+
+Scalation Backward Elimination Reversed Order: longitude, ocean proximity NEAR OCEAN
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_3L_rSq_Backward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png}
+     \end{subfigure}
+
+%     \vspace{10pt} % Add some vertical spacing between rows
+%
+%     % Second Row
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_3L_rSq_Backward.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Backward.png}
+%     \end{subfigure}
+     
+     \caption{California House Prices 3 Layer Neural Network Backward Elimination Quality of Fit Metrics\\ Left: Scalation $R^2$, Right: Scalation AIC/BIC}%\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:California House Prices 3 Layer Neural Network Backward Elimination Quality of Fit Metrics}
+\end{figure}
+
+Scalation Stepwise Selection Order: longitude
+
+%\begin{figure}[H]
+%     \centering
+%     \captionsetup{justification=centering}
+%     % First Row
+%     \begin{subfigure}[b]{0.4\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_3L_rSq_Stepwise.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.4\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/Scalation_3L_AIC_BIC_Stepwise.png}
+%     \end{subfigure}
+
+%     \vspace{10pt} % Add some vertical spacing between rows
+%
+%     % Second Row
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_3L_rSq_Stepwise.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Housing_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Stepwise.png}
+%     \end{subfigure}
+     
+%     \caption{California House Prices 3 Layer Neural Network Stepwise Selection Quality of Fit Metrics\\ Left: Scalation $R^2$, Right: Scalation AIC/BIC}%\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+%     \label{fig:California House Prices 3 Layer Neural Network Stepwise Selection Quality of Fit Metrics}
+%\end{figure}
+
 \subsection{4 Layer Neural Network}
+
+In PyTorch, the best results were found when using LeakyReLU as the activation function for both the hidden layers, identity as the activation function for the output layer, $100$ nodes in both the hidden layers, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - California House Prices 4L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:California House Prices 4L Plots}.
+
+\begin{table}[H]
+\centering
+\caption{PyTorch - California House Prices 4L NN}
+\label{tab:PyTorch - California House Prices 4L NN}
+\begin{tabular}{|c|c|c|}\hline
+Metric & In-Sample & 80-20 Split \\ \hline \hline
+rSq & 0.8487 & 0.8169 \\ \hline
+rSqBar & 0.8487 & 0.8164 \\ \hline
+sst & 272264434648930.1250 & 54723646809444.8281 \\ \hline
+sse & 41181537257287.0938 & 10017926659371.0547 \\ \hline
+sde & 44906.8688 & 49582.1229 \\ \hline
+mse0 & 2015442532.0456 & 2451168744.6467 \\ \hline
+rmse & 44893.6803 & 49509.2794 \\ \hline
+mae & 30100.2002 & 33668.9617 \\ \hline
+smape & 15.3759 & 17.0476 \\ \hline
+m & 20433.0000 & 4087.0000 \\ \hline
+dfr & 12.0000 & 12.0000 \\ \hline
+df & 20421.0000 & 4075.0000 \\ \hline
+fStat & 9549.0685 & 1515.4151 \\ \hline
+aic & 437782.7298 & 88384.2484 \\ \hline
+bic & 437877.8287 & 88460.0352 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2/PyTorch_4L_In_Sample.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Housing_P2/PyTorch_4L_80_20.png}
+     \end{subfigure}
+     
+     \caption{California House Prices 4 Layer Neural Network Plots\\ Left: PyTorch In-Sample, Right: PyTorch Out-of-Sample\\ black: actual y-values, red: predicted y-values}
+     \label{fig:California House Prices 4L Plots}
+\end{figure}
+
+\subsection{CNN}
+
+First, the performance of the CNN model for in-sample and validation (80–20 split) was tested using the default parameters with 8 filters in Layer 1 and 16 filters in Layer 2, with ReLU activation in both the CNN and fully connected layers and a learning rate of 0.01. The following table shows the quality of fit of the model.
+\begin{table}[H]
+\centering
+\caption{California Housing: CNN regression performance without fine-tuning.}
+\label{tab:California_Housing_(In-Sample)}
+\begin{tabular}{lrr}
+\toprule
+ & In-Sample & 80-20 Split \\
+\midrule
+rSq & 0.756 & 0.719 \\
+sst & 27483.199 & 5409.368 \\
+sse & 6719.378 & 1520.702 \\
+mse & 0.326 & 0.368 \\
+rmse & 0.571 & 0.607 \\
+mae & 0.399 & 0.427 \\
+m & 20640.000 & 4128.000 \\
+aic & -16296.936 & 2743.693 \\
+bic & 10943.871 & 24459.300 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Then, hyperparameter optimization resulted in 16 filters in Layer 1 and 32 filters in Layer 2, with ReLU activation in the CNN layers. The optimal learning rate was 0.03 with a batch size of 32. The following table shows the quality of fit of the tuned CNN model.
+
+\begin{table}[H]
+\centering
+\caption{California Housing: regression performance of the tuned CNN model.}
+\label{tab:California_Housing_(In-Sample)}
+\begin{tabular}{lrr}
+\toprule
+ & In-Sample & 80-20 Split \\
+\midrule
+rSq & 0.776 & 0.721 \\
+sst & 27483.199 & 5409.368 \\
+sse & 6166.594 & 1509.280 \\
+mse & 0.299 & 0.366 \\
+rmse & 0.547 & 0.605 \\
+mae & 0.377 & 0.445 \\
+m & 20640.000 & 4128.000 \\
+aic & -10308.860 & 10472.570 \\
+bic & 47719.694 & 56731.305 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+\begin{figure}[h]
+\centering
+\begin{tabular}{cc}
+    \includegraphics[width=0.5\textwidth]{fig/ch1.png} &
+    \includegraphics[width=0.5\textwidth]{fig/ch2.png} \\
+    
+    (a) In-sample & (b) Validation (80-20 split)
+\end{tabular}
+\caption{Performance of the CNN regression on the California Housing dataset without fine-tuning.}
+\label{fig:cnn1}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+
+\begin{tabular}{cc}
+    \includegraphics[width=0.5\textwidth]{fig/ch3.png} &
+    \includegraphics[width=0.5\textwidth]{fig/ch4.png} \\
+    
+    (a) In-sample & (b) Validation (80-20 split)
+\end{tabular}
+\caption{Performance of the CNN regression model on the California Housing dataset with fine-tuning.}
+\label{fig:cnn1}
+\end{figure}
+
 
 \section{Insurance Charges}
 
@@ -453,6 +1128,113 @@ bic & 23352.2501 & 4673.6845 \\ \hline
      \label{fig:Insurance Charges 2L Plots}
 \end{figure}
 
+\subsubsection{Feature Selection}
+
+Scalation Forward Selection Order: age, smoker yes, region southwest, region northwest, bmi, sex male, region southeast, children
+
+PyTorch Forward Selection Order: Null, bmi, smoker yes, age, children, region southeast, region southwest, region northwest, sex male
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Forward.png}
+     \end{subfigure}
+
+     \vspace{10pt} % Add some vertical spacing between rows
+
+     % Second Row
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Forward.png}
+     \end{subfigure}
+     
+     \caption{Insurance Charges 2 Layer Neural Network Forward Selection Quality of Fit Metrics\\  Top Left: Scalation $R^2$, Top Right: Scalation AIC/BIC\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Insurance Charges 2 Layer Neural Network Forward Selection Quality of Fit Metrics}
+\end{figure}
+
+Scalation Backward Elimination Reversed Order: age, smoker yes
+
+PyTorch Backward Elimination Reversed Order: Null, smoker yes, age, bmi, children, region southeast, region southwest, region northwest, sex male
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Backward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Backward.png}
+     \end{subfigure}
+
+     \vspace{10pt} % Add some vertical spacing between rows
+
+     % Second Row
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Backward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Backward.png}
+     \end{subfigure}
+     
+     \caption{Insurance Charges 2 Layer Neural Network Backward Elimination Quality of Fit Metrics\\  Top Left: Scalation $R^2$, Top Right: Scalation AIC/BIC\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Insurance Charges 2 Layer Neural Network Backward Elimination Quality of Fit Metrics}
+\end{figure}
+
+Scalation Stepwise Selection Order: age, smoker yes, region southwest, region northwest, children, bmi, region southeast
+
+PyTorch Stepwise Selection Order: Null, smoker yes, age, bmi, children, region southeast, region southwest
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_2L_rSq_Stepwise.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_2L_AIC_BIC_Stepwise.png}
+     \end{subfigure}
+
+     \vspace{10pt} % Add some vertical spacing between rows
+
+     % Second Row
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_2L_rSq_Stepwise.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_2L_AIC_BIC_Stepwise.png}
+     \end{subfigure}
+     
+     \caption{Insurance Charges 2 Layer Neural Network Stepwise Selection Quality of Fit Metrics\\  Top Left: Scalation $R^2$, Top Right: Scalation AIC/BIC\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Insurance Charges 2 Layer Neural Network Stepwise Selection Quality of Fit Metrics}
+\end{figure}
+
 \subsection{3 Layer Neural Network}
 
 In Scalation, the best results were found when using lreLU as the activation function for the hidden layer, identity as the activation function for the output layer, $2\times x.dim2=16$ nodes in the hidden layer, a learning rate of $0.01$, and a batch size of $16$. The results are shown in \Cref{tab:Scalation - Insurance Charges 3L NN}. In PyTorch, the best results were found when using LeakyReLU as the activation function for the hidden layer, identity as the activation function for the output layer, $100$ nodes in the hidden layer, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - Insurance Charges 3L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:Insurance Charges 3L Plots}.
@@ -536,7 +1318,236 @@ bic & 22416.0158 & 4516.6394 \\ \hline
      \label{fig:Insurance Charges 3L Plots}
 \end{figure}
 
+\subsubsection{Feature Selection}
+
+When performing feature selection in Scalation, it appears that there was an error as the plots reveal that all the values were NaN. Further analysis would need to be done to understand what went wrong.
+
+Scalation Forward Selection Order: age, bmi, children, sex male, smoker yes, region northwest, region southeast, region southwest
+
+PyTorch Forward Selection Order: Null, age, bmi, children, sex male, smoker yes, region northwest, region southeast, region southwest
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Forward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Forward.png}
+     \end{subfigure}
+
+%     \vspace{10pt} % Add some vertical spacing between rows
+%
+%     % Second Row
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_3L_rSq_Forward.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Forward.png}
+%     \end{subfigure}
+     
+     \caption{Insurance Charges 3 Layer Neural Network Forward Selection Quality of Fit Metrics\\ Left: Scalation $R^2$, Right: Scalation AIC/BIC}%\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Insurance Charges 3 Layer Neural Network Forward Selection Quality of Fit Metrics}
+\end{figure}
+
+Scalation Backward Elimination Reversed Order: age, region southwest
+
+PyTorch Backward Elimination Reversed Order: Null, region southwest, region southeast, region northwest, smoker yes, sex male, children, bmi, age
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     % First Row
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Backward.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Backward.png}
+     \end{subfigure}
+
+%     \vspace{10pt} % Add some vertical spacing between rows
+%
+%     % Second Row
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_3L_rSq_Backward.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Backward.png}
+%     \end{subfigure}
+     
+     \caption{Insurance Charges 3 Layer Neural Network Backward Elimination Quality of Fit Metrics\\ Left: Scalation $R^2$, Right: Scalation AIC/BIC}%\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+     \label{fig:Insurance Charges 3 Layer Neural Network Backward Elimination Quality of Fit Metrics}
+\end{figure}
+
+Scalation Stepwise Selection Order: age
+
+PyTorch Stepwise Selection Order: Null
+
+%\begin{figure}[H]
+%     \centering
+%     \captionsetup{justification=centering}
+%     % First Row
+%     \begin{subfigure}[b]{0.4\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_3L_rSq_Stepwise.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.4\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/Scalation_3L_AIC_BIC_Stepwise.png}
+%     \end{subfigure}
+%
+%     \vspace{10pt} % Add some vertical spacing between rows
+%
+%     % Second Row
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_3L_rSq_Stepwise.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../Insurance_P2_Feature_Selection/PyTorch_3L_AIC_BIC_Stepwise.png}
+%     \end{subfigure}
+%     
+%     \caption{Insurance Charges 3 Layer Neural Network Stepwise Selection Quality of Fit Metrics\\ Left: PyTorch $R^2$, Right: PyTorch AIC/BIC}%\\ Left: Scalation $R^2$, Right: Scalation AIC/BIC}%\\ Bottom Left: PyTorch $R^2$, Bottom Right: PyTorch AIC/BIC}
+%     \label{fig:Insurance Charges 3 Layer Neural Network Stepwise Selection Quality of Fit Metrics}
+%\end{figure}
+
 \subsection{4 Layer Neural Network}
+
+In PyTorch, the best results were found when using LeakyReLU as the activation function for both the hidden layers, identity as the activation function for the output layer, $100$ nodes in both the hidden layers, a learning rate of $0.01$, and a batch size of $32$. The results are shown in \Cref{tab:PyTorch - Insurance Charges 4L NN}. Plots for In-Sample and Out-of-Sample testing can be found in \Cref{fig:Insurance Charges 4L Plots}.
+
+\begin{table}[H]
+\centering
+\caption{PyTorch - Insurance Charges 4L NN}
+\label{tab:PyTorch - Insurance Charges 4L NN}
+\begin{tabular}{|c|c|c|}\hline
+Metric & In-Sample & 80-20 Split \\ \hline \hline
+rSq & 0.8983 & 0.8767 \\ \hline
+rSqBar & 0.8978 & 0.8734 \\ \hline
+sst & 196074221568.3671 & 42646829902.3297 \\ \hline
+sse & 19935812189.1823 & 5259097272.7372 \\ \hline
+sde & 3871.6059 & 4497.4768 \\ \hline
+mse0 & 14899710.1563 & 19623497.2863 \\ \hline
+rmse & 3860.0143 & 4429.8417 \\ \hline
+mae & 2150.0006 & 2895.1120 \\ \hline
+smape & 21.6872 & 30.1824 \\ \hline
+m & 1338.0000 & 268.0000 \\ \hline
+dfr & 8.0000 & 8.0000 \\ \hline
+df & 1330.0000 & 260.0000 \\ \hline
+fStat & 1468.8647 & 231.0475 \\ \hline
+aic & 22115.5484 & 4516.3199 \\ \hline
+bic & 22157.1399 & 4545.0477 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+     \centering
+     \captionsetup{justification=centering}
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2/PyTorch_4L_In_Sample.png}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{../Insurance_P2/PyTorch_4L_80_20.png}
+     \end{subfigure}
+     
+     \caption{Insurance Charges 4 Layer Neural Network Plots\\ Left: PyTorch In-Sample, Right: PyTorch Out-of-Sample\\ black: actual y-values, red: predicted y-values}
+     \label{fig:Insurance Charges 4L Plots}
+\end{figure}
+
+\subsection{CNN}
+
+First, the performance of the CNN model for in-sample and validation (80–20 split) was tested using the default parameters with 8 filters in Layer 1 and 16 filters in Layer 2, with ReLU activation in both the CNN and fully connected layers and a learning rate of 0.01. The following table shows the quality of fit of the model.
+
+\begin{table}[H]
+\centering
+\caption{Insurance Charges: CNN regression performance without fine-tuning.}
+\label{tab:Insurance_Charges_(In-Sample)}
+\begin{tabular}{lrr}
+\toprule
+ & In-Sample & 80-20 Split \\
+\midrule
+rSq & 0.564 & 0.589 \\
+sst & 196074242048.000 & 41606660096.000 \\
+sse & 85561786368.000 & 17117836288.000 \\
+mse & 63947523.444 & 63872523.463 \\
+rmse & 7996.720 & 7992.029 \\
+mae & 6135.541 & 6441.092 \\
+m & 1338.000 & 268.000 \\
+aic & 30914.641 & 11682.603 \\
+bic & 48762.572 & 24010.461 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Then, hyperparameter optimization resulted in 16 filters in Layer 1 and 32 filters in Layer 2, with ReLU activation in the CNN layers. The optimal learning rate was 0.03 with a batch size of 2. The following table shows the quality of fit of the tuned model.
+
+\begin{table}[H]
+\centering
+\caption{Insurance Charges: regression performance of the tuned CNN model.}
+\label{tab:Insurance_Charges_(In-Sample)}
+\begin{tabular}{lrr}
+\toprule
+ & In-Sample & 80-20 Split \\
+\midrule
+rSq & 0.749 & 0.782 \\
+sst & 196074242048.000 & 41606660096.000 \\
+sse & 49236451328.000 & 9083892736.000 \\
+mse & 36798543.593 & 33895122.149 \\
+rmse & 6066.180 & 5821.952 \\
+mae & 3993.667 & 3131.384 \\
+m & 1338.000 & 268.000 \\
+aic & 37935.256 & 19272.793 \\
+bic & 75955.040 & 45533.681 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\newpage
+
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{cc}
+    \includegraphics[width=0.5\textwidth]{fig/ins1.png} &
+    \includegraphics[width=0.5\textwidth]{fig/ins2.png} \\
+    
+    (a) In-sample & (b) Validation (80-20 split)
+\end{tabular}
+\caption{Performance of the CNN regression on the Insurance Charges dataset without fine-tuning.}
+\label{fig:cnn1}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+
+\begin{tabular}{cc}
+    \includegraphics[width=0.5\textwidth]{fig/ins3.png} &
+    \includegraphics[width=0.5\textwidth]{fig/ins4.png} \\
+    
+    (a) In-sample & (b) Validation (80-20 split)
+\end{tabular}
+
+\caption{Performance of the CNN regression model on the Insurance Charges dataset with fine-tuning.}
+\label{fig:cnn1}
+\end{figure}
+
 
 \section{Summary}
 
@@ -570,23 +1581,23 @@ bic & -1073.62 & -785.471 \\ \hline
 \centering
 \caption{PyTorch: - Auto MPG In-Sample QoF Comparison}
 \label{tab:PyTorch: - Auto MPG In-Sample QoF Comparison}
-\begin{tabular}{|c|c|c|} \hline 
-Metric & 2 Layer NN & 3 Layer NN \\ \hline \hline 
-rSq & 0.8232 & 0.8855 \\ \hline 
-rSqBar & 0.8199 & 0.8835 \\ \hline 
-sst & 23818.9935 & 23818.9935 \\ \hline 
-sse & 4211.9875 & 2726.1212 \\ \hline 
-sde & 3.3119 & 2.6644 \\ \hline 
-mse0 & 10.7449 & 6.9544 \\ \hline 
-rmse & 3.2779 & 2.6371 \\ \hline 
-mae & 2.4941 & 1.8997 \\ \hline 
-smape & 11.4175 & 8.0857 \\ \hline 
-m & 392.0000 & 392.0000 \\ \hline 
-dfr & 8.0000 & 8.0000 \\ \hline 
-df & 384.0000 & 384.0000 \\ \hline 
-fStat & 223.4423 & 371.3914 \\ \hline 
-aic & 946.7758 & 776.2343 \\ \hline 
-bic & 978.5459 & 808.0044 \\ \hline 
+\begin{tabular}{|c|c|c|c|c|} \hline
+Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
+rSq & 0.8232 & 0.8855 & 0.9368 & 0.8920 \\ \hline
+rSqBar & 0.8199 & 0.8835 & 0.9356 & - \\ \hline
+sst & 23818.9935 & 23818.9935 & 23818.9935 & 23818.9940 \\ \hline
+sse & 4211.9875 & 2726.1212 & 1506.1940 & 2567.6090 \\ \hline
+sde & 3.3119 & 2.6644 & 1.9805 & - \\ \hline
+mse0 & 10.7449 & 6.9544 & 3.8423 & 6.5500 \\ \hline
+rmse & 3.2779 & 2.6371 & 1.9602 & 2.5590 \\ \hline
+mae & 2.4941 & 1.8997 & 1.3969 & 1.8470 \\ \hline
+smape & 11.4175 & 8.0857 & 5.9485 & - \\ \hline
+m & 392.0000 & 392.0000 & 392.0000 & 392.0000 \\ \hline
+dfr & 8.0000 & 8.0000 & 8.0000 & 8.0000 \\ \hline
+df & 384.0000 & 384.0000 & 384.0000 & 384.0000 \\ \hline
+fStat & 223.4423 & 371.3914 & 711.0733 & - \\ \hline
+aic & 946.7758 & 776.2343 & 543.6631 & 5554.7520 \\ \hline
+bic & 978.5459 & 808.0044 & 575.4332 & 15121.5220 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -618,23 +1629,23 @@ bic & -165.198 & -152.464 \\ \hline
 \centering
 \caption{PyTorch: - Auto MPG Out-of-Sample QoF Comparison}
 \label{tab:PyTorch: - Auto MPG Out-of-Sample QoF Comparison}
-\begin{tabular}{|c|c|c|} \hline 
-Metric & 2 Layer NN & 3 Layer NN \\ \hline \hline 
-rSq & 0.8391 & 0.9095 \\ \hline 
-rSqBar & 0.8232 & 0.9005 \\ \hline 
-sst & 4910.2699 & 4910.2699 \\ \hline 
-sse & 790.2830 & 444.5322 \\ \hline 
-sde & 3.3363 & 2.5022 \\ \hline 
-mse0 & 10.0036 & 5.6270 \\ \hline 
-rmse & 3.1628 & 2.3721 \\ \hline 
-mae & 2.4081 & 1.6043 \\ \hline 
-smape & 11.1501 & 7.0419 \\ \hline 
-m & 79.0000 & 79.0000 \\ \hline 
-dfr & 8.0000 & 8.0000 \\ \hline 
-df & 71.0000 & 71.0000 \\ \hline 
-fStat & 46.2681 & 89.1576 \\ \hline 
-aic & 197.9325 & 152.4784 \\ \hline 
-bic & 216.8881 & 171.4340 \\ \hline 
+\begin{tabular}{|c|c|c|c|c|} \hline
+Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
+rSq & 0.8391 & 0.9095 & 0.9057 & 0.8590 \\ \hline
+rSqBar & 0.8232 & 0.9005 & 0.8964 & - \\ \hline
+sst & 4910.2699 & 4910.2699 & 4910.2699 & 4032.2060 \\ \hline
+sse & 790.2830 & 444.5322 & 462.8453 & 568.9520 \\ \hline
+sde & 3.3363 & 2.5022 & 2.5532 & - \\ \hline
+mse0 & 10.0036 & 5.6270 & 5.8588 & 7.2020 \\ \hline
+rmse & 3.1628 & 2.3721 & 2.4205 & 2.6840 \\ \hline
+mae & 2.4081 & 1.6043 & 1.6990 & 2.0460 \\ \hline
+smape & 11.1501 & 7.0419 & 7.2746 & - \\ \hline
+m & 79.0000 & 79.0000 & 79.0000 & 79.0000 \\ \hline
+dfr & 8.0000 & 8.0000 & 8.0000 & 8.0000 \\ \hline
+df & 71.0000 & 71.0000 & 71.0000 & 71.0000 \\ \hline
+fStat & 46.2681 & 89.1576 & 85.2788 & - \\ \hline
+aic & 197.9325 & 152.4784 & 155.6677 & 4973.9740 \\ \hline
+bic & 216.8881 & 171.4340 & 174.6232 & 10681.9730 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -668,23 +1679,23 @@ bic & -256788 & -16338.3 \\ \hline
 \centering
 \caption{PyTorch: - California House Prices In-Sample QoF Comparison}
 \label{tab:PyTorch: - California House Prices In-Sample QoF Comparison}
-\begin{tabular}{|c|c|c|} \hline 
-Metric & 2 Layer NN & 3 Layer NN \\ \hline \hline 
-rSq & 0.6468 & 0.8057 \\ \hline 
-rSqBar & 0.6466 & 0.8056 \\ \hline 
-sst & 272264434648930.1875 & 272264434648930.1250 \\ \hline 
-sse & 96172625731084.4375 & 52901444882088.6094 \\ \hline 
-sde & 68625.7706 & 50897.3609 \\ \hline 
-mse0 & 4706730569.7198 & 2589019961.9287 \\ \hline 
-rmse & 68605.6162 & 50882.4131 \\ \hline 
-mae & 49654.9430 & 34838.6035 \\ \hline 
-smape & 26.7647 & 18.1115 \\ \hline 
-m & 20433.0000 & 20433.0000 \\ \hline 
-dfr & 12.0000 & 12.0000 \\ \hline 
-df & 20421.0000 & 20421.0000 \\ \hline 
-fStat & 3115.8995 & 7056.5363 \\ \hline 
-aic & 455113.0754 & 442899.9831 \\ \hline 
-bic & 455208.1743 & 442995.0819 \\ \hline 
+\begin{tabular}{|c|c|c|c|c|} \hline
+Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
+rSq & 0.6468 & 0.8057 & 0.8487 & 0.7760 \\ \hline
+rSqBar & 0.6466 & 0.8056 & 0.8487 & - \\ \hline
+sst & 272264434648930.1875 & 272264434648930.1250 & 272264434648930.1250 & 27483.1990 \\ \hline
+sse & 96172625731084.4375 & 52901444882088.6094 & 41181537257287.0938 & 6166.5940 \\ \hline
+sde & 68625.7706 & 50897.3609 & 44906.8688 & - \\ \hline
+mse0 & 4706730569.7198 & 2589019961.9287 & 2015442532.0456 & 0.2990 \\ \hline
+rmse & 68605.6162 & 50882.4131 & 44893.6803 & 0.5470 \\ \hline
+mae & 49654.9430 & 34838.6035 & 30100.2002 & 0.3770 \\ \hline
+smape & 26.7647 & 18.1115 & 15.3759 & - \\ \hline
+m & 20433.0000 & 20433.0000 & 20433.0000 & 20640.0000 \\ \hline
+dfr & 12.0000 & 12.0000 & 12.0000 & 12.0000 \\ \hline
+df & 20421.0000 & 20421.0000 & 20421.0000 & 20421.0000 \\ \hline
+fStat & 3115.8995 & 7056.5363 & 9549.0685 & - \\ \hline
+aic & 455113.0754 & 442899.9831 & 437782.7298 & -10308.8600 \\ \hline
+bic & 455208.1743 & 442995.0819 & 437877.8287 & 47719.6940 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -716,23 +1727,23 @@ bic & -51243.9 & -3345.51 \\ \hline
 \centering
 \caption{PyTorch: - California House Prices Out-of-Sample QoF Comparison}
 \label{tab:PyTorch: - California House Prices Out-of-Sample QoF Comparison}
-\begin{tabular}{|c|c|c|} \hline 
-Metric & 2 Layer NN & 3 Layer NN \\ \hline \hline 
-rSq & 0.6516 & 0.7961 \\ \hline 
-rSqBar & 0.6506 & 0.7956 \\ \hline 
-sst & 54723646809444.8438 & 54723646809444.8281 \\ \hline 
-sse & 19066274074331.2266 & 11156430483920.8633 \\ \hline 
-sde & 68402.0487 & 52323.7456 \\ \hline 
-mse0 & 4665102538.3732 & 2729735865.8970 \\ \hline 
-rmse & 68301.5559 & 52246.8742 \\ \hline 
-mae & 50131.4253 & 35574.6590 \\ \hline 
-smape & 26.6343 & 18.1492 \\ \hline 
-m & 4087.0000 & 4087.0000 \\ \hline 
-dfr & 12.0000 & 12.0000 \\ \hline 
-df & 4075.0000 & 4075.0000 \\ \hline 
-fStat & 635.0821 & 1326.1142 \\ \hline 
-aic & 91014.4163 & 88824.1727 \\ \hline 
-bic & 91090.2031 & 88899.9595 \\ \hline 
+\begin{tabular}{|c|c|c|c|c|} \hline
+Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
+rSq & 0.6516 & 0.7961 & 0.8169 & 0.7210 \\ \hline
+rSqBar & 0.6506 & 0.7956 & 0.8164 & - \\ \hline
+sst & 54723646809444.8438 & 54723646809444.8281 & 54723646809444.8281 & 5409.3680 \\ \hline
+sse & 19066274074331.2266 & 11156430483920.8633 & 10017926659371.0547 & 1509.2800 \\ \hline
+sde & 68402.0487 & 52323.7456 & 49582.1229 & - \\ \hline
+mse0 & 4665102538.3732 & 2729735865.8970 & 2451168744.6467 & 0.3660 \\ \hline
+rmse & 68301.5559 & 52246.8742 & 49509.2794 & 0.6050 \\ \hline
+mae & 50131.4253 & 35574.6590 & 33668.9617 & 0.4450 \\ \hline
+smape & 26.6343 & 18.1492 & 17.0476 & - \\ \hline
+m & 4087.0000 & 4087.0000 & 4087.0000 & 4128.0000 \\ \hline
+dfr & 12.0000 & 12.0000 & 12.0000 & 12.0000 \\ \hline
+df & 4075.0000 & 4075.0000 & 4075.0000 & 4075.0000 \\ \hline
+fStat & 635.0821 & 1326.1142 & 1515.4151 & - \\ \hline
+aic & 91014.4163 & 88824.1727 & 88384.2484 & 10472.5700 \\ \hline
+bic & 91090.2031 & 88899.9595 & 88460.0352 & 56731.3050 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -766,23 +1777,23 @@ bic & -13561.3 & -1422.08 \\ \hline
 \centering
 \caption{PyTorch: - Insurance Charges In-Sample QoF Comparison}
 \label{tab:PyTorch: - Insurance Charges In-Sample QoF Comparison}
-\begin{tabular}{|c|c|c|} \hline 
-Metric & 2 Layer NN & 3 Layer NN \\ \hline \hline 
-rSq & 0.7516 & 0.8766 \\ \hline 
-rSqBar & 0.7503 & 0.8760 \\ \hline 
-sst & 196074221568.3671 & 196074221568.3671 \\ \hline 
-sse & 48702200251.0962 & 24191406710.2515 \\ \hline 
-sde & 6051.2970 & 4264.8596 \\ \hline 
-mse0 & 36399252.8035 & 18080274.0734 \\ \hline 
-rmse & 6033.1793 & 4252.0906 \\ \hline 
-mae & 4158.4738 & 2466.8147 \\ \hline 
-smape & 39.1264 & 23.6520 \\ \hline 
-m & 1338.0000 & 1338.0000 \\ \hline 
-dfr & 8.0000 & 8.0000 \\ \hline 
-df & 1330.0000 & 1330.0000 \\ \hline 
-fStat & 503.0696 & 1181.2260 \\ \hline 
-aic & 23310.6587 & 22374.4243 \\ \hline 
-bic & 23352.2501 & 22416.0158 \\ \hline 
+\begin{tabular}{|c|c|c|c|c|} \hline
+Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
+rSq & 0.7516 & 0.8766 & 0.8983 & 0.7490 \\ \hline
+rSqBar & 0.7503 & 0.8760 & 0.8978 & - \\ \hline
+sst & 196074221568.3671 & 196074221568.3671 & 196074221568.3671 & 196074242048.0000 \\ \hline
+sse & 48702200251.0962 & 24191406710.2515 & 19935812189.1823 & 49236451328.0000 \\ \hline
+sde & 6051.2970 & 4264.8596 & 3871.6059 & - \\ \hline
+mse0 & 36399252.8035 & 18080274.0734 & 14899710.1563 & 36798543.5930 \\ \hline
+rmse & 6033.1793 & 4252.0906 & 3860.0143 & 6066.1800 \\ \hline
+mae & 4158.4738 & 2466.8147 & 2150.0006 & 3993.6670 \\ \hline
+smape & 39.1264 & 23.6520 & 21.6872 & - \\ \hline
+m & 1338.0000 & 1338.0000 & 1338.0000 & 1338.0000 \\ \hline
+dfr & 8.0000 & 8.0000 & 8.0000 & 8.0000 \\ \hline
+df & 1330.0000 & 1330.0000 & 1330.0000 & 1330.0000 \\ \hline
+fStat & 503.0696 & 1181.2260 & 1468.8647 & - \\ \hline
+aic & 23310.6587 & 22374.4243 & 22115.5484 & 37935.2560 \\ \hline
+bic & 23352.2501 & 22416.0158 & 22157.1399 & 75955.0400 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -814,24 +1825,26 @@ bic & -2696.43 & -293.842 \\ \hline
 \centering
 \caption{PyTorch: - Insurance Charges Out-of-Sample QoF Comparison}
 \label{tab:PyTorch: - Insurance Charges Out-of-Sample QoF Comparison}
-\begin{tabular}{|c|c|c|} \hline 
-Metric & 2 Layer NN & 3 Layer NN \\ \hline \hline 
-rSq & 0.8007 & 0.8891 \\ \hline 
-rSqBar & 0.7953 & 0.8861 \\ \hline 
-sst & 42646829902.3297 & 42646829902.3297 \\ \hline 
-sse & 8498989265.5920 & 4730156280.8836 \\ \hline 
-sde & 5717.3788 & 4265.3146 \\ \hline 
-mse0 & 31712646.5134 & 17649836.8690 \\ \hline 
-rmse & 5631.3983 & 4201.1709 \\ \hline 
-mae & 3932.9280 & 2735.5215 \\ \hline 
-smape & 36.6337 & 27.4890 \\ \hline 
-m & 268.0000 & 268.0000 \\ \hline 
-dfr & 8.0000 & 8.0000 \\ \hline 
-df & 260.0000 & 260.0000 \\ \hline 
-fStat & 130.5808 & 260.5182 \\ \hline 
-aic & 4644.9566 & 4487.9115 \\ \hline 
-bic & 4673.6845 & 4516.6394 \\ \hline 
+\begin{tabular}{|c|c|c|c|c|} \hline
+Metric & 2 Layer NN & 3 Layer NN & 4 Layer NN & Tuned CNN \\ \hline \hline
+rSq & 0.8007 & 0.8891 & 0.8767 & 0.7820 \\ \hline
+rSqBar & 0.7953 & 0.8861 & 0.8734 & - \\ \hline
+sst & 42646829902.3297 & 42646829902.3297 & 42646829902.3297 & 41606660096.0000 \\ \hline
+sse & 8498989265.5920 & 4730156280.8836 & 5259097272.7372 & 9083892736.0000 \\ \hline
+sde & 5717.3788 & 4265.3146 & 4497.4768 & - \\ \hline
+mse0 & 31712646.5134 & 17649836.8690 & 19623497.2863 & 33895122.1490 \\ \hline
+rmse & 5631.3983 & 4201.1709 & 4429.8417 & 5821.9520 \\ \hline
+mae & 3932.9280 & 2735.5215 & 2895.1120 & 3131.3840 \\ \hline
+smape & 36.6337 & 27.4890 & 30.1824 & - \\ \hline
+m & 268.0000 & 268.0000 & 268.0000 & 268.0000 \\ \hline
+dfr & 8.0000 & 8.0000 & 8.0000 & 8.0000 \\ \hline
+df & 260.0000 & 260.0000 & 260.0000 & 260.0000 \\ \hline
+fStat & 130.5808 & 260.5182 & 231.0475 & - \\ \hline
+aic & 4644.9566 & 4487.9115 & 4516.3199 & 19272.7930 \\ \hline
+bic & 4673.6845 & 4516.6394 & 4545.0477 & 45533.6810 \\ \hline
 \end{tabular}
 \end{table}
+
+In summary, using more layers resulted in better performing models, while using a CNN resulted in a slight improvement to only 2 layers. 
 
 \end{document}

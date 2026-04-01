@@ -1865,6 +1865,6 @@ bic & 4673.6845 & 4516.6394 & 4570.3488 & 45533.6810 \\ \hline
 \end{tabular}
 \end{table}
 
-In summary, using more layers resulted in better performing models, while using a CNN resulted in a slight improvement to only 2 layers. 
+In summary, using more layers improved in-sample performance across the board, though too many layers occasionally led to overfitting during out-of-sample (OOS) validation. In particular, for the Auto MPG dataset, increasing from three to four layers yielded no OOS $R^{2}$ improvement, while for the Insurance Charges dataset, a four-layer model actually led to worse performance. Furthermore, while the CNN slightly outperformed a two-layer NN, it was worse than the three and four layer NN. Notably, for the Insurance Charges dataset, CNN was the worst performing model.
 
 \end{document}

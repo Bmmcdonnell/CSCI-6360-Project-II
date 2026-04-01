@@ -347,3 +347,20 @@ INFO: Unsupported notification method: $/setTrace
 2026.03.30 16:19:09 INFO  time: compiled CSCI-6360-Project-II_d5c0a6989e in 0.87s
 2026.03.30 16:19:11 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
 2026.03.30 16:19:11 INFO  time: indexed workspace in 5.16s
+2026.03.30 16:20:28 INFO  Shutting down server
+2026.03.30 16:20:28 INFO  Memory monitor stopped
+2026.03.30 16:20:28 INFO  shutting down Metals
+2026.03.30 16:20:28 INFO  Shut down connection with build server.
+2026.03.30 16:20:28 INFO  Exiting server
+2026.04.01 01:04:01 INFO  Started: Metals version 1.6.6 in folders '/Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II' for client Visual Studio Code 1.113.0.
+2026.04.01 01:04:01 INFO  Memory monitor started
+Apr 01, 2026 1:04:03 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.04.01 01:04:03 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.04.01 01:04:04 INFO  Attempting to connect to the build server...
+2026.04.01 01:04:04 INFO  Running BSP server List(/usr/local/bin/scala-cli, bsp, --json-options, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-options-v2.json, --json-launcher-options, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-launcher-options.json, --envs-file, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.scala-build/ide-envs.json, /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II)
+2026.04.01 01:04:04 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/gabriel/Library/Mobile Documents/com~apple~CloudDocs/CSCI-6360-Project-II/.metals/bsp.trace.json or /Users/gabriel/Library/Caches/org.scalameta.metals/bsp.trace.json
+2026.04.01 01:04:06 INFO  time: Connected to build server in 2.25s
+2026.04.01 01:04:06 INFO  Connected to Build server: scala-cli v1.12.0
+2026.04.01 01:04:06 INFO  time: Imported build in 0.13s
+2026.04.01 01:04:07 INFO  compiling csci-6360-project-ii_d5c0a6989e (7 scala sources)
